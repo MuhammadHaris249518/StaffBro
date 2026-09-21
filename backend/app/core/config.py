@@ -33,8 +33,17 @@ class Settings(BaseSettings):
 
     @property
     def db_connect_args(self) -> dict:
+        import ssl
+
         args: dict = {"prepared_statement_cache_size": 0}
-        args["ssl"] = database_ssl(self.database_url, self.app_env)
+        ssl_setting = database_ssl(self.database_url, self.app_env)
+        if ssl_setting:
+            ctx = ssl.create_default_context()
+            ctx.check_hostname = False
+            ctx.verify_mode = ssl.CERT_NONE
+            args["ssl"] = ctx
+        else:
+            args["ssl"] = False
         return args
 
 
