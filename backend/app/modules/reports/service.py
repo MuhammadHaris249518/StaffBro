@@ -1,17 +1,12 @@
-﻿import uuid
+import uuid
 from datetime import UTC, datetime, timedelta
 
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.enums import Availability, UsageEventKind
-from app.modules.auth.models import User, UserRole
-from app.modules.businesses.models import Business, BusinessStatus
-from app.modules.candidacies.models import Candidacy, CandidacySource, CandidacyStatus
-from app.modules.jobs.models import Job, JobStatus
 from app.modules.reports.models import UsageEvent
 from app.modules.reports.schemas import AnalyticsOut
-from app.modules.workers.models import WorkerProfile
 
 
 async def track(
@@ -36,6 +31,12 @@ async def track(
 
 
 async def analytics(db: AsyncSession) -> AnalyticsOut:
+    from app.modules.auth.models import User, UserRole
+    from app.modules.businesses.models import Business, BusinessStatus
+    from app.modules.candidacies.models import Candidacy, CandidacySource, CandidacyStatus
+    from app.modules.jobs.models import Job, JobStatus
+    from app.modules.workers.models import WorkerProfile
+
     workers_total = (
         await db.execute(select(func.count()).select_from(User).where(User.role == UserRole.WORKER))
     ).scalar_one()
