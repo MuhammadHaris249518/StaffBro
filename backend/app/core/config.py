@@ -28,8 +28,9 @@ class Settings(BaseSettings):
         if self.cors_origin_regex:
             return self.cors_origin_regex
         if self.app_env != "local":
-            return r"https://.*\.onrender\.com"
+            return r"https://.*\.(onrender\.com|up\.railway\.app|railway\.app)"
         return None
+
 
     @property
     def db_connect_args(self) -> dict:
