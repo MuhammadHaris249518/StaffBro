@@ -8,5 +8,5 @@ export function resolveApiBaseUrl(): string {
   if (host && host !== "localhost" && host !== "127.0.0.1") {
     return `http://${host}:8000`;
   }
-  return "http://localhost:8000";
+  return "https://staffbro-production.up.railway.app";
 }
