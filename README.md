@@ -57,27 +57,28 @@ Copy [`.env.example`](./.env.example) to `.env` if you run the API outside Compo
 
 Catalogue seed: 8 professions, 70+ skills (Roman Urdu aliases), Islamabad + Rawalpindi areas. Business types later are restaurant / hotel / grocery only (D1).
 
-### Deploy on Render
+### Deployment on Railway (Active)
 
-The repo root [`render.yaml`](./render.yaml) Blueprint creates three services in Singapore:
+The project is actively hosted on [Railway](https://railway.app) with three connected cloud services:
 
-| Service | What it is |
-| --- | --- |
-| `staffbro-api` | Docker FastAPI (`backend/Dockerfile`). Binds `$PORT`, migrates, seeds demo data |
-| `staffbro-admin` | Vite static SPA. `VITE_API_URL` is the API’s public URL |
-| `staffbro-db` | Postgres 16 (free plan **expires after 30 days**) |
+| Service | Type | Live URL | Details |
+| --- | --- | --- | --- |
+| **`staffbro-api`** | Docker (FastAPI) | [https://staffbro-production.up.railway.app](https://staffbro-production.up.railway.app/docs) | Auto-migrates with Alembic, seeds catalogue & demo data |
+| **`staffbro-admin`** | Node / Vite SPA | [https://abundant-wonder-production-b171.up.railway.app](https://abundant-wonder-production-b171.up.railway.app) | Admin web portal (`03009999999` / `password8`) |
+| **`PostgreSQL`** | Managed Database | Internal (`staffbro.railway.internal`) | Cloud PostgreSQL 16 database |
 
-Expo is **not** a Render service. After the API is up, set `EXPO_PUBLIC_API_URL` in `mobile/` to `https://staffbro-api-….onrender.com` and restart Expo.
-
-1. Push this repository to GitHub (Render deploys from git). Almost the whole tree is still untracked locally — commit first.
-2. Open [Render Dashboard → New → Blueprint](https://dashboard.render.com/blueprints/new), connect the repo, apply `render.yaml`.
-3. Wait for `staffbro-api` (health check `GET /health`) and `staffbro-admin`.
-4. Admin: `https://staffbro-admin-….onrender.com` — log in with `03009999999` / `password8`.
-5. API docs: `https://staffbro-api-….onrender.com/docs`.
-
-If the admin SPA still calls `localhost:8000`, set `VITE_API_URL` on `staffbro-admin` to the API URL and **Manual Deploy** that static site.
-
-Free web services sleep after ~15 minutes idle; the first request after sleep can take ~30–60s. Upgrade Postgres before day 30 or export a dump.
+#### Environment Variables on Railway:
+* **API Service (`StaffBro`):**
+  * `DATABASE_URL`: Linked from Railway Postgres (`${{Postgres.DATABASE_URL}}`)
+  * `APP_ENV`: `production`
+  * `SEED_ON_START`: `true`
+  * `JWT_SECRET`: Secret key for JWT auth
+  * `INTERNAL_TASKS_SECRET`: Tasks secret
+* **Admin Service (`abundant-wonder`):**
+  * `VITE_API_URL`: `https://staffbro-production.up.railway.app`
+  * Start Command: `npx vite preview --host 0.0.0.0 --port 3000`
+* **Mobile App:**
+  * `EXPO_PUBLIC_API_URL`: `https://staffbro-production.up.railway.app` (configured in `mobile/eas.json` for APK builds).
 
 ### Layout
 
