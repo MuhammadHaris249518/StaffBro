@@ -7,6 +7,14 @@ Two-sided hiring marketplace for frontline workers and hospitality / retail busi
 - [Implementation plan](./IMPLEMENTATION_PLAN.md)
 - [Mobile UI (Stitch)](./Stitch%20Ui/)
 
+## 🚀 Live Deployments & App Download
+
+| Service | Link / Access | Notes |
+| :--- | :--- | :--- |
+| **Android App (.APK)** | [**Download & Install StaffBro APK**](https://expo.dev/accounts/sheikh-khizar/projects/staffbro/builds/6c978e34-a19a-4eda-a29d-1f0189fd34d7) | Direct download link for Android devices |
+| **Admin Web Portal** | [StaffBro Admin Dashboard](https://abundant-wonder-production-b171.up.railway.app) | Login: `03009999999` / `password8` |
+| **Backend API (Docs)** | [Interactive Swagger Docs](https://staffbro-production.up.railway.app/docs) | Health: [`/health`](https://staffbro-production.up.railway.app/health) |
+
 ## Status
 
 **Now-path: MVP** (accounts → profiles → approved businesses → jobs → apply/offer/hire → admin + analytics). Foundations from Phase 1 stay in the repo. The 10-phase full product plan is in [IMPLEMENTATION_PLAN.md](./IMPLEMENTATION_PLAN.md).
