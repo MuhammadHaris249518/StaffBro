@@ -1,0 +1,50 @@
+import enum
+
+
+class EmploymentType(str, enum.Enum):
+    FULL_TIME = "FULL_TIME"
+    PART_TIME = "PART_TIME"
+    CONTRACT = "CONTRACT"
+    TEMPORARY = "TEMPORARY"
+
+
+class Availability(str, enum.Enum):
+    AVAILABLE = "AVAILABLE"
+    BUSY = "BUSY"
+    NOT_LOOKING = "NOT_LOOKING"
+
+
+class BusinessType(str, enum.Enum):
+    RESTAURANT = "RESTAURANT"
+    HOTEL = "HOTEL"
+    GROCERY = "GROCERY"
+
+
+class NotificationKind(str, enum.Enum):
+    APPLICATION_RECEIVED = "APPLICATION_RECEIVED"
+    APPLICATION_STATUS = "APPLICATION_STATUS"
+    HIRED = "HIRED"
+    DIRECT_OFFER = "DIRECT_OFFER"
+    BUSINESS_APPROVED = "BUSINESS_APPROVED"
+    BUSINESS_REJECTED = "BUSINESS_REJECTED"
+    ACCOUNT = "ACCOUNT"
+
+
+class UsageEventKind(str, enum.Enum):
+    REGISTER = "REGISTER"
+    LOGIN = "LOGIN"
+    JOB_POST = "JOB_POST"
+    APPLICATION = "APPLICATION"
+    PROFILE_VIEW = "PROFILE_VIEW"
+    DIRECT_OFFER = "DIRECT_OFFER"
+    HIRE = "HIRE"
+    CONTACT = "CONTACT"
+
+
+class AuditAction(str, enum.Enum):
+    BUSINESS_APPROVE = "BUSINESS_APPROVE"
+    BUSINESS_REJECT = "BUSINESS_REJECT"
+    USER_SUSPEND = "USER_SUSPEND"
+    USER_UNSUSPEND = "USER_UNSUSPEND"
+    JOB_CLOSE = "JOB_CLOSE"
+    JOB_REOPEN = "JOB_REOPEN"

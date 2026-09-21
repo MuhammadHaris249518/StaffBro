@@ -1,0 +1,39 @@
+name: staffbro
+
+services:
+  db:
+    image: postgres:16-alpine
+    hostname: db
+    environment:
+      POSTGRES_USER: staffbro
+      POSTGRES_PASSWORD: staffbro
+      POSTGRES_DB: staffbro
+    ports:
+      - "5432:5432"
+    volumes:
+      - staffbro_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U staffbro -d staffbro"]
+      interval: 3s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+
+  api:
+    build: ./backend
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: on-failure
+    environment:
+      APP_ENV: local
+      APP_VERSION: 0.2.0
+      DATABASE_URL: postgresql+asyncpg://staffbro:staffbro@db:5432/staffbro
+      SEED_ON_START: "true"
+      JWT_SECRET: dev-only-change-before-any-public-deploy
+      CORS_ORIGINS: http://localhost:5173
+    ports:
+      - "8000:8000"
+
+volumes:
+  staffbro_pg:

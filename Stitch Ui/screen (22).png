@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Worker - Application Status Timeline</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface": "#f8f9ff",
+            "tertiary-fixed": "#66ff8e",
+            "on-primary-fixed": "#002114",
+            "surface-container-high": "#dce9ff",
+            "surface-container": "#e5eeff",
+            "surface-dim": "#cbdbf5",
+            "outline": "#6e7a72",
+            "on-secondary-container": "#586377",
+            "on-error": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "background": "#f8f9ff",
+            "on-secondary": "#ffffff",
+            "inverse-surface": "#213145",
+            "on-primary-container": "#a7ffd5",
+            "surface-variant": "#d3e4fe",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#eff4ff",
+            "on-background": "#0b1c30",
+            "on-tertiary-fixed-variant": "#005322",
+            "primary-container": "#0d7a57",
+            "error": "#ba1a1a",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed-variant": "#3c475a",
+            "tertiary-container": "#007c36",
+            "inverse-primary": "#7cd8af",
+            "surface-bright": "#f8f9ff",
+            "primary-fixed": "#98f5ca",
+            "primary-fixed-dim": "#7cd8af",
+            "inverse-on-surface": "#eaf1ff",
+            "secondary-fixed-dim": "#bcc7de",
+            "secondary-container": "#d5e0f8",
+            "on-tertiary-container": "#b2ffba",
+            "on-surface-variant": "#3e4943",
+            "outline-variant": "#bec9c1",
+            "on-tertiary-fixed": "#002109",
+            "tertiary-fixed-dim": "#3de273",
+            "secondary": "#545f73",
+            "on-surface": "#0b1c30",
+            "error-container": "#ffdad6",
+            "surface-tint": "#006c4c",
+            "secondary-fixed": "#d8e3fb",
+            "on-primary-fixed-variant": "#005138",
+            "surface-container-highest": "#d3e4fe",
+            "on-error-container": "#93000a",
+            "tertiary": "#006029",
+            "primary": "#005f42",
+            "on-secondary-fixed": "#111c2d"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1.5rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem",
+            "space-md": "1rem",
+            "gutter": "1rem",
+            "margin-mobile": "1rem",
+            "gutter-mobile": "0.75rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "headline-xl": ["Plus Jakarta Sans"],
+            "label-sm": ["Noto Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "body-lg": ["Noto Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "label-md": ["Noto Sans"],
+            "body-md": ["Noto Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "label-lg": ["Noto Sans"],
+            "body-sm": ["Noto Sans"]
+          },
+          "fontSize": {
+            "headline-xl": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "600" }],
+            "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "headline-md": ["18px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "headline-xl-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col items-center justify-start pb-28">
+<!-- Mobile Container (Max 420px for realistic baseline) -->
+<div class="w-full max-w-md bg-surface min-h-screen flex flex-col shadow-lg relative">
+<!-- Top App Bar (Shared Component Pattern) -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest flex justify-between items-center w-full px-margin-mobile h-14 border-b border-outline-variant/30 shadow-sm">
+<div class="flex items-center gap-2">
+<button aria-label="Go Back" class="min-w-[48px] min-h-[48px] flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-primary text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-headline-md text-headline-md text-on-surface leading-tight">
+            Application Status
+          </h1>
+<span class="font-label-sm text-label-sm text-secondary -mt-0.5" dir="rtl">درخواست کی تفصیل</span>
+</div>
+</div>
+<button class="min-w-[48px] min-h-[48px] px-2 flex items-center justify-center gap-1 text-primary hover:bg-surface-container-high rounded-lg transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+<span class="font-label-md text-label-md font-bold">Help <span class="font-normal" dir="rtl">(مدد)</span></span>
+</button>
+</header>
+<!-- Main Content Flow -->
+<main class="flex-1 px-margin-mobile py-4 space-y-4">
+<!-- Job & Employer Summary Card -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-4 shadow-sm relative overflow-hidden">
+<div class="flex justify-between items-start mb-2">
+<div class="space-y-0.5">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">restaurant</span>
+              Food & Hospitality
+            </span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-bold pt-1">
+              Head Chef / Karahi Specialist
+            </h2>
+<div class="flex items-center gap-1.5 pt-0.5">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Khyber Shinwari Restaurant</span>
+<!-- Verified Badge -->
+<span class="inline-flex items-center gap-0.5 text-[#059669] bg-[#ecfdf5] px-1.5 py-0.5 rounded text-[10px] font-bold tracking-tight">
+<span class="material-symbols-outlined fill text-[12px]">verified</span>
+                Verified
+              </span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2.5 pt-3 border-t border-surface-dim/60">
+<div class="flex items-start gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px] mt-0.5">location_on</span>
+<div>
+<p class="font-label-sm text-label-sm text-secondary">Location</p>
+<p class="font-body-sm text-body-sm font-semibold text-on-surface">F-10 Markaz, Islamabad</p>
+</div>
+</div>
+<div class="flex items-start gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5">payments</span>
+<div>
+<p class="font-label-sm text-label-sm text-secondary">Monthly Salary</p>
+<p class="font-body-sm text-body-sm font-bold text-primary">PKR 45,000 - 55,000</p>
+</div>
+</div>
+</div>
+<!-- Perks & Applied Date -->
+<div class="mt-3 pt-2.5 bg-surface-container-low rounded-lg p-2.5 flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-1 text-on-secondary-container">
+<span class="material-symbols-outlined fill text-[#059669] text-[16px]">check_circle</span>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Free Meals + Accommodation</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">
+            Applied: 12 Feb 2025
+          </span>
+</div>
+</section>
+<!-- Contact Unlocked Banner (Privacy Compliant) -->
+<section class="bg-gradient-to-br from-[#effbf5] to-[#e6f7ef] border border-[#a7ffd5] rounded-xl p-3.5 shadow-sm">
+<div class="flex items-start gap-2.5 mb-3">
+<div class="min-w-[36px] min-h-[36px] w-9 h-9 rounded-full bg-primary flex items-center justify-center text-white shrink-0 mt-0.5 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">lock_open</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h3 class="font-label-lg text-label-lg font-bold text-on-surface">Direct Contact Active</h3>
+<span class="bg-[#059669] text-white text-[10px] px-1.5 py-0.2 rounded font-bold">UNLOCKED</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5 leading-snug">
+              Your contact has been shared with Khyber Shinwari Restaurant for this application only.
+            </p>
+<p class="font-label-sm text-label-sm text-primary mt-0.5 font-medium" dir="rtl">
+              رابطہ نمبر جاری کر دیا گیا ہے، آپ براہ راست مینیجر سے بات کر سکتے ہیں۔
+            </p>
+</div>
+</div>
+<!-- Employer Contact Subcard -->
+<div class="bg-surface-container-lowest rounded-lg p-3 border border-[#bec9c1]/40 flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold text-xs">
+                HS
+              </div>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Haji Shaukat</p>
+<p class="font-label-sm text-label-sm text-secondary">Kitchen Operations Manager</p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded text-on-secondary-container font-mono font-medium">0300-855xxxx</span>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-1">
+<!-- WhatsApp Button -->
+<a class="min-h-[48px] bg-[#25D366] hover:bg-[#20ba59] active:scale-95 transition-all text-[#064e3b] font-bold text-label-md rounded-lg flex items-center justify-center gap-1.5 px-2 shadow-sm text-center" href="https://wa.me/">
+<span class="material-symbols-outlined fill text-[18px]">chat</span>
+<span>WhatsApp</span>
+</a>
+<!-- Call Direct -->
+<a class="min-h-[48px] bg-surface-container-lowest border-2 border-primary text-primary hover:bg-surface-container-low active:scale-95 transition-all font-bold text-label-md rounded-lg flex items-center justify-center gap-1.5 px-2 text-center" href="tel:03008550000">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span>Call Direct</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Stepper Pipeline Header -->
+<div class="flex items-center justify-between pt-1">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-1.5">
+<span>Hiring Progress</span>
+<span class="text-secondary font-label-md font-normal" dir="rtl">(بھرتی کا مرحلہ)</span>
+</h3>
+<span class="font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed-variant px-2 py-0.5 rounded-full font-bold">
+          Step 4 of 5
+        </span>
+</div>
+<!-- Candidacy Status Pipeline / Stepper Timeline -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-4 shadow-sm relative">
+<!-- Vertical Timeline Root -->
+<div class="relative pl-7 space-y-6">
+<!-- Continuous Vertical Connector Line -->
+<div class="absolute left-3.5 top-3 bottom-8 w-0.5 bg-[#059669]/30"></div>
+<!-- Step 1: Applied (Completed) -->
+<div class="relative group">
+<!-- Node Pin -->
+<div class="absolute -left-7 top-0.5 w-7 h-7 rounded-full bg-[#ecfdf5] border-2 border-[#059669] flex items-center justify-center text-[#059669] shadow-xs">
+<span class="material-symbols-outlined fill text-[16px]">check</span>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface">Applied</h4>
+<p class="font-label-sm text-label-sm text-secondary font-medium" dir="rtl">درخواست جمع ہوئی</p>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">12 Feb, 10:30 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Applied via Staffbro app with verified Pakistani phone number and profile credentials.
+            </p>
+</div>
+<!-- Step 2: Employer Viewed (Completed) -->
+<div class="relative group">
+<!-- Node Pin -->
+<div class="absolute -left-7 top-0.5 w-7 h-7 rounded-full bg-[#ecfdf5] border-2 border-[#059669] flex items-center justify-center text-[#059669] shadow-xs">
+<span class="material-symbols-outlined fill text-[16px]">check</span>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface">Employer Viewed</h4>
+<p class="font-label-sm text-label-sm text-secondary font-medium" dir="rtl">مالک نے دیکھا</p>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">12 Feb, 2:15 PM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Restaurant manager reviewed your culinary experience & verified CNIC badge.
+            </p>
+</div>
+<!-- Step 3: Interview / Direct Contact (Completed) -->
+<div class="relative group">
+<!-- Node Pin -->
+<div class="absolute -left-7 top-0.5 w-7 h-7 rounded-full bg-[#ecfdf5] border-2 border-[#059669] flex items-center justify-center text-[#059669] shadow-xs">
+<span class="material-symbols-outlined fill text-[16px]">check</span>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface">Interview / Direct Contact</h4>
+<p class="font-label-sm text-label-sm text-secondary font-medium" dir="rtl">انٹرویو مکمل ہوا</p>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">13 Feb, 11:00 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Manager called via WhatsApp for cooking skill check and scheduled kitchen food trial.
+            </p>
+</div>
+<!-- Step 4: Offer Extended & Hired (ACTIVE CURRENT STAGE) -->
+<div class="relative -ml-2">
+<!-- Node Pin Pulse -->
+<div class="absolute -left-5 top-1 w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center shadow-md ring-4 ring-primary-fixed">
+<span class="material-symbols-outlined text-[16px]">star</span>
+</div>
+<div class="bg-gradient-to-r from-[#0d7a57] to-[#0a6346] text-white p-3.5 rounded-xl shadow-md border border-[#059669]/50">
+<div class="flex justify-between items-start">
+<div>
+<div class="inline-flex items-center gap-1 bg-white/20 px-2 py-0.5 rounded text-[11px] font-bold text-white mb-1">
+<span class="material-symbols-outlined text-[14px]">celebration</span>
+                    CURRENT STATUS
+                  </div>
+<h4 class="font-headline-md text-headline-md font-bold text-white">Offer Extended & Hired!</h4>
+<p class="text-white/90 font-label-md text-label-md" dir="rtl">ملازمت کی پیشکش منظور ہوئی</p>
+</div>
+<span class="font-label-sm text-label-sm text-[#a7ffd5] font-bold bg-[#005138]/50 px-2 py-1 rounded">Today</span>
+</div>
+<p class="font-body-sm text-body-sm text-white/95 mt-2 leading-relaxed">
+                Congratulations! The employer marked you as <span class="font-bold underline text-white">HIRED</span> on Staffbro with agreed salary PKR 50,000 + food & room.
+              </p>
+</div>
+</div>
+<!-- Step 5: Hire Confirmation by Worker (PENDING ACTION) -->
+<div class="relative pt-1">
+<!-- Node Pin (Pending) -->
+<div class="absolute -left-7 top-1 w-7 h-7 rounded-full bg-surface-container border-2 border-outline flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[16px]">pending_actions</span>
+</div>
+<div class="bg-[#fffbeb] border-2 border-[#fcd34d] rounded-xl p-3.5 shadow-sm">
+<div class="flex items-center gap-1.5 text-[#b45309]">
+<span class="material-symbols-outlined fill text-[20px]">how_to_reg</span>
+<h4 class="font-label-lg text-label-lg font-bold">Worker Confirmation Required</h4>
+</div>
+<p class="font-label-md text-label-md text-[#92400e] font-semibold mt-0.5" dir="rtl">
+                آپ کی تصدیق درکار ہے
+              </p>
+<p class="font-body-sm text-body-sm text-[#78350f] mt-1.5 leading-snug">
+                Did you accept this job and join the work? Confirming helps build your verified employment history and unlocks guaranteed payment protection.
+              </p>
+<!-- Action Triggers -->
+<div class="mt-3 space-y-2">
+<button class="w-full min-h-[48px] bg-[#0d7a57] hover:bg-[#09573e] active:scale-98 transition-all text-white font-bold text-body-sm rounded-lg px-3 py-2 flex items-center justify-center gap-2 shadow" type="button">
+<span class="material-symbols-outlined fill text-[20px]">task_alt</span>
+<span>Yes, I Joined This Job (جی ہاں، میں نے کام شروع کیا)</span>
+</button>
+<button class="w-full min-h-[44px] bg-white hover:bg-[#fef3c7] text-[#92400e] border border-[#f59e0b] font-label-md text-label-md rounded-lg px-2 flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">report_problem</span>
+<span>Report an Issue / Terms Changed (شکایت درج کریں)</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Cancellation / Safety Policy Card -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/40 p-4 space-y-3">
+<div class="flex items-start gap-2.5">
+<div class="min-w-[36px] min-h-[36px] w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface">100% Free Worker Guarantee</h4>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5">
+              Staffbro never asks frontline workers for commission or registration fees. If anyone demands payment, report immediately.
+            </p>
+<p class="font-label-sm text-label-sm text-[#ba1a1a] font-medium mt-1" dir="rtl">
+              اسٹاف برو پر نوکری حاصل کرنا بالکل مفت ہے۔ کسی کو پیسے نہ دیں۔
+            </p>
+</div>
+</div>
+<div class="pt-2 border-t border-surface-dim/70 flex flex-col sm:flex-row items-center justify-between gap-2">
+<div class="text-left w-full sm:w-auto">
+<p class="font-label-sm text-label-sm text-secondary">Found another opportunity?</p>
+<p class="font-body-sm text-body-sm text-on-surface">You can withdraw safely without penalty.</p>
+</div>
+<button class="w-full sm:w-auto min-h-[48px] px-3.5 py-2 border border-[#ba1a1a] text-[#ba1a1a] bg-[#fff5f5] hover:bg-[#fee2e2] rounded-lg font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+<span>Withdraw Application (درخواست واپس لیں)</span>
+</button>
+</div>
+</section>
+<!-- Application Reference Metadata -->
+<div class="text-center py-2 space-y-0.5">
+<p class="font-label-sm text-label-sm text-secondary">
+          Application ID: <span class="font-mono font-semibold text-on-surface">SB-PK-2025-88419</span>
+</p>
+<p class="font-label-sm text-label-sm text-outline">
+          Encrypted & Protected by Staffbro Trust System
+        </p>
+</div>
+</main>
+<!-- Sticky Bottom Bar (Call Manager & WhatsApp Chat Dock) -->
+<!-- Compliant with Elevation Level 3 and Shared Component rules -->
+<div class="fixed bottom-0 left-0 w-full z-50 flex justify-center bg-transparent pointer-events-none">
+<div class="w-full max-w-md bg-surface-container-lowest border-t border-outline-variant/30 px-3 py-2.5 shadow-[0_-2px_8px_0_rgba(15,23,42,0.08)] pointer-events-auto">
+<div class="grid grid-cols-2 gap-2.5">
+<!-- Direct Call Button -->
+<a class="min-h-[48px] flex items-center justify-center gap-2 bg-surface-container-lowest border-2 border-primary text-primary hover:bg-surface-container-low font-bold text-label-lg rounded-lg shadow-sm active:scale-95 transition-all" href="tel:03008550000">
+<span class="material-symbols-outlined text-[20px]">call</span>
+<span>Call Manager</span>
+</a>
+<!-- WhatsApp Chat Button (WhatsApp Green Token) -->
+<a class="min-h-[48px] flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-[#064e3b] font-bold text-label-lg rounded-lg shadow-md active:scale-95 transition-all" href="https://wa.me/">
+<span class="material-symbols-outlined fill text-[20px]">chat</span>
+<span>WhatsApp Chat</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</body></html>

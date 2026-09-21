@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Register Screen - Staffbro</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary": "#545f73",
+            "on-secondary-fixed-variant": "#3c475a",
+            "secondary-fixed": "#d8e3fb",
+            "inverse-surface": "#213145",
+            "on-tertiary-container": "#b2ffba",
+            "on-primary": "#ffffff",
+            "on-secondary-container": "#586377",
+            "tertiary": "#006029",
+            "error": "#ba1a1a",
+            "on-secondary": "#ffffff",
+            "on-background": "#0b1c30",
+            "on-secondary-fixed": "#111c2d",
+            "primary-fixed": "#98f5ca",
+            "error-container": "#ffdad6",
+            "primary": "#005f42",
+            "inverse-primary": "#7cd8af",
+            "on-tertiary-fixed-variant": "#005322",
+            "background": "#f8f9ff",
+            "surface-variant": "#d3e4fe",
+            "surface-container": "#e5eeff",
+            "on-primary-fixed-variant": "#005138",
+            "tertiary-fixed": "#66ff8e",
+            "surface-tint": "#006c4c",
+            "surface-container-low": "#eff4ff",
+            "outline": "#6e7a72",
+            "outline-variant": "#bec9c1",
+            "on-error": "#ffffff",
+            "surface-dim": "#cbdbf5",
+            "surface-container-highest": "#d3e4fe",
+            "tertiary-container": "#007c36",
+            "on-tertiary": "#ffffff",
+            "primary-fixed-dim": "#7cd8af",
+            "surface-container-high": "#dce9ff",
+            "tertiary-fixed-dim": "#3de273",
+            "secondary-container": "#d5e0f8",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-container": "#a7ffd5",
+            "on-surface-variant": "#3e4943",
+            "on-error-container": "#93000a",
+            "secondary-fixed-dim": "#bcc7de",
+            "on-tertiary-fixed": "#002109",
+            "on-surface": "#0b1c30",
+            "primary-container": "#0d7a57",
+            "inverse-on-surface": "#eaf1ff",
+            "surface": "#f8f9ff",
+            "on-primary-fixed": "#002114",
+            "surface-bright": "#f8f9ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-mobile": "0.75rem",
+            "space-md": "1rem",
+            "space-xl": "2rem",
+            "margin-mobile": "1rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "margin": "1.5rem"
+          },
+          "fontFamily": {
+            "body-md": ["Noto Sans"],
+            "label-sm": ["Noto Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Noto Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "body-lg": ["Noto Sans"],
+            "body-sm": ["Noto Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Noto Sans"],
+            "headline-xl": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "600" }],
+            "headline-md": ["18px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+            "headline-xl-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+            "headline-xl": ["32px", { "lineHeight": "40px", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      font-feature-settings: 'liga';
+    }
+    
+    /* Native smooth transitions */
+    input:focus {
+      outline: none;
+    }
+  </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased flex justify-center items-start min-h-screen p-0 sm:py-6 selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Viewport Container (Simulating Android 360x800 or Responsive Handset) -->
+<main class="w-full max-w-[412px] min-h-screen sm:min-h-[820px] bg-surface-container-lowest sm:rounded-2xl sm:shadow-lg flex flex-col justify-between overflow-x-hidden relative">
+<!-- Top App Bar (Shared Components execution: docked full-width top) -->
+<header class="sticky top-0 z-30 flex justify-between items-center w-full px-margin-mobile h-14 bg-surface-container-lowest dark:bg-inverse-surface shadow-sm">
+<div class="flex items-center gap-2">
+<button aria-label="Go back" class="min-w-[48px] min-h-[48px] -ml-2 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors active:scale-95 text-on-surface" type="button">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-headline-md text-headline-md text-on-surface font-bold leading-tight">Create Account</h1>
+<span class="font-label-sm text-label-sm text-secondary -mt-0.5">Staffbro Frontline Registry</span>
+</div>
+</div>
+<div class="flex items-center">
+<!-- Direct Language Toggle or Help Anchor -->
+<button class="min-w-[48px] min-h-[48px] flex items-center justify-center text-primary font-label-md text-label-md hover:bg-surface-container rounded-lg px-2 transition-colors" type="button">
+          اردو
+        </button>
+</div>
+</header>
+<!-- Scrollable Content Canvas -->
+<div class="flex-1 px-margin-mobile pt-3 pb-8 flex flex-col gap-4">
+<!-- Reassurance Banner: 100% Free with verified trust badges -->
+<div class="p-3 bg-[#ECFDF5] border border-[#A7F3D0] rounded-xl flex items-start gap-3 shadow-sm">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="flex flex-col">
+<p class="font-label-lg text-label-lg text-primary font-bold">100% Free for Job Seekers</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug">
+            Staffbro is 100% Free for frontline job seekers. No hidden fees or commission cuts.
+          </p>
+</div>
+</div>
+<!-- Selected Role Chip Row (Asymmetric card styling) -->
+<div class="p-3 bg-surface-container-low border border-outline-variant/50 rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider block">Selected Role</span>
+<span class="font-label-lg text-label-lg text-on-surface font-bold block">Frontline Worker <span class="font-body-sm text-secondary font-normal">(کام کرنے والے)</span></span>
+</div>
+</div>
+<button class="min-h-[48px] px-3 flex items-center text-primary font-label-md text-label-md hover:bg-surface-container rounded-lg active:scale-95 transition-transform" type="button">
+          Change
+        </button>
+</div>
+<!-- Registration Form: Strictly Phone + Password, No Social/Email -->
+<form class="flex flex-col gap-4" id="registerForm" onsubmit="event.preventDefault();">
+<!-- 1. Full Name Input Field -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-lg text-label-lg text-on-surface flex items-center justify-between" for="fullName">
+<span>Full Name <span class="text-secondary font-normal">(پورا نام)</span></span>
+<span class="text-error font-body-sm">*</span>
+</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-secondary pointer-events-none text-[22px]" data-icon="person">person</span>
+<input class="w-full min-h-[52px] pl-11 pr-4 bg-surface-container-lowest rounded-lg border-[1.5px] border-outline-variant/80 text-on-surface font-body-lg text-body-lg placeholder:text-secondary/60 focus:border-primary focus:ring-1 focus:ring-primary transition-all shadow-sm" id="fullName" name="fullName" placeholder="e.g. Muhammad Usman or Fatima Bibi" required="" type="text"/>
+</div>
+<p class="font-body-sm text-body-sm text-secondary flex items-center gap-1 pl-1">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="info">info</span>
+            Please enter your official CNIC name
+          </p>
+</div>
+<!-- 2. Mobile Number Input Field (Pakistan +92 Locked) -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-lg text-label-lg text-on-surface flex items-center justify-between" for="phoneNumber">
+<div class="flex items-center gap-1.5">
+<span>Phone Number <span class="text-secondary font-normal">(موبائل نمبر)</span></span>
+<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-[#ECFDF5] text-[#059669] font-label-sm text-[11px] font-bold">
+<span class="material-symbols-outlined text-[13px]" data-icon="chat">chat</span> WhatsApp Active
+              </span>
+</div>
+<span class="text-error font-body-sm">*</span>
+</label>
+<div class="relative flex items-stretch rounded-lg border-[1.5px] border-outline-variant/80 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary bg-surface-container-lowest shadow-sm transition-all overflow-hidden">
+<!-- Locked Pakistan Prefix Button/Indicator -->
+<div class="flex items-center gap-1.5 px-3 bg-surface-container border-r border-outline-variant/60 select-none shrink-0 min-h-[52px]">
+<span aria-label="Pakistan Flag" class="text-[18px] leading-none" role="img">🇵🇰</span>
+<span class="font-label-lg text-label-lg text-on-surface font-bold">+92</span>
+</div>
+<input class="w-full min-h-[52px] px-3.5 bg-transparent border-0 text-on-surface font-body-lg text-body-lg placeholder:text-secondary/60 focus:ring-0" id="phoneNumber" inputmode="numeric" maxlength="11" name="phoneNumber" placeholder="0300 1234567" required="" type="tel"/>
+</div>
+<p class="font-body-sm text-body-sm text-secondary flex items-center gap-1 pl-1">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="lock">lock</span>
+            Used for employer calls & WhatsApp OTP verification
+          </p>
+</div>
+<!-- 3. Password Input Field with Toggle -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-lg text-label-lg text-on-surface flex items-center justify-between" for="password">
+<span>Create Password <span class="text-secondary font-normal">(پاس ورڈ)</span></span>
+<span class="font-label-sm text-label-sm text-secondary font-normal">Min 6 characters</span>
+</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-secondary pointer-events-none text-[22px]" data-icon="key">key</span>
+<input class="w-full min-h-[52px] pl-11 pr-12 bg-surface-container-lowest rounded-lg border-[1.5px] border-outline-variant/80 text-on-surface font-body-lg text-body-lg placeholder:text-secondary/60 focus:border-primary focus:ring-1 focus:ring-primary transition-all shadow-sm" id="password" minlength="6" name="password" placeholder="Kam az kam 6 characters" required="" type="password"/>
+<button aria-label="Toggle password visibility" class="absolute right-0 min-w-[48px] min-h-[48px] flex items-center justify-center text-secondary hover:text-on-surface transition-colors" id="togglePasswordBtn" onclick="togglePasswordVisibility('password', this)" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<!-- 4. Confirm Password Field -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-lg text-label-lg text-on-surface" for="confirmPassword">
+            Confirm Password <span class="text-secondary font-normal">(پاس ورڈ کی تصدیق)</span>
+</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-secondary pointer-events-none text-[22px]" data-icon="lock_reset">lock_reset</span>
+<input class="w-full min-h-[52px] pl-11 pr-12 bg-surface-container-lowest rounded-lg border-[1.5px] border-outline-variant/80 text-on-surface font-body-lg text-body-lg placeholder:text-secondary/60 focus:border-primary focus:ring-1 focus:ring-primary transition-all shadow-sm" id="confirmPassword" minlength="6" name="confirmPassword" placeholder="Re-type your password" required="" type="password"/>
+<button aria-label="Toggle confirm password visibility" class="absolute right-0 min-w-[48px] min-h-[48px] flex items-center justify-center text-secondary hover:text-on-surface transition-colors" id="toggleConfirmPasswordBtn" onclick="togglePasswordVisibility('confirmPassword', this)" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<!-- Checkbox Terms with accessible 48px touch zone -->
+<div class="pt-1">
+<label class="flex items-start gap-3 cursor-pointer select-none group min-h-[48px] py-1">
+<div class="min-w-[48px] min-h-[48px] -m-3 flex items-center justify-center shrink-0">
+<input checked="" class="w-5 h-5 text-primary border-outline-variant rounded focus:ring-primary focus:ring-offset-0 transition-colors cursor-pointer" name="termsAgreement" required="" type="checkbox"/>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant leading-snug">
+              I accept <a class="text-primary font-bold underline" href="#">Terms of Service</a> & <a class="text-primary font-bold underline" href="#">Privacy Policy</a>. I understand Staffbro verifies credentials.
+            </span>
+</label>
+</div>
+<!-- Primary Action Button: Emerald Green (min 48dp) -->
+<div class="pt-2 flex flex-col gap-3">
+<button class="w-full min-h-[52px] px-6 bg-primary hover:bg-[#064e3b] text-on-primary rounded-lg font-headline-md text-headline-md font-bold flex items-center justify-center gap-2 shadow-md active:scale-95 transition-all focus:ring-2 focus:ring-offset-2 focus:ring-primary" type="submit">
+<span class="material-symbols-outlined text-[22px]" data-icon="how_to_reg">how_to_reg</span>
+<span>Create My Account</span>
+</button>
+<!-- System Status Chip: WhatsApp code verification follows -->
+<div class="flex items-center justify-center gap-1.5 py-1.5 px-3 bg-surface-container rounded-full mx-auto border border-outline-variant/30">
+<span class="material-symbols-outlined text-[18px] text-[#059669]" data-icon="verified_user">verified_user</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">WhatsApp code verification follows after signup</span>
+</div>
+</div>
+</form>
+<!-- Trust Badges Micro-Row -->
+<div class="mt-4 pt-4 border-t border-outline-variant/30 grid grid-cols-2 gap-2 text-center">
+<div class="flex items-center justify-center gap-1.5 p-2 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-primary text-[18px]" data-icon="shield">shield</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">CNIC Protected</span>
+</div>
+<div class="flex items-center justify-center gap-1.5 p-2 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-[#059669] text-[18px]" data-icon="check_circle">check_circle</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">NADRA Verified</span>
+</div>
+</div>
+</div>
+<!-- Sticky Bottom Navigation: Suppressed because page is Linear/Transactional (Registration) -->
+<!-- Accessible Bottom Text: Log In Here Anchor -->
+<footer class="w-full p-4 bg-surface-container-lowest border-t border-outline-variant/20 flex flex-col items-center justify-center gap-1">
+<p class="font-body-md text-body-md text-secondary text-center">
+        Already registered? 
+        <a class="text-primary font-bold hover:underline min-h-[48px] inline-flex items-center px-1" href="#login">
+          Log In here
+        </a>
+</p>
+<span class="font-label-sm text-label-sm text-outline-variant">Staffbro Pakistan • Secure Frontline Network</span>
+</footer>
+</main>
+<!-- Interactive Logic for Input Toggles -->
+<script>
+    function togglePasswordVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      const icon = btn.querySelector('.material-symbols-outlined');
+      if (!input || !icon) return;
+
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.textContent = 'visibility_off';
+      } else {
+        input.type = 'password';
+        icon.textContent = 'visibility';
+      }
+    }
+
+    // Auto-formatting for Pakistan mobile numbers: auto strip non-digits
+    const phoneInput = document.getElementById('phoneNumber');
+    if (phoneInput) {
+      phoneInput.addEventListener('input', (e) => {
+        let val = e.target.value.replace(/\D/g, '');
+        if (val.length > 11) {
+          val = val.substring(0, 11);
+        }
+        e.target.value = val;
+      });
+    }
+  </script>
+</body></html>

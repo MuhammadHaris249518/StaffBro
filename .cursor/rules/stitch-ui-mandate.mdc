@@ -1,0 +1,26 @@
+---
+description: Staffbro mobile UI must match Stitch designs exactly — no invented colors, layout, or components.
+alwaysApply: true
+---
+
+# Stitch UI is the source of truth
+
+Mobile UI must reproduce `Stitch Ui/` pixel-for-pixel. Do not invent a palette, type scale, spacing, icons, or layout.
+
+## Before coding any screen
+
+1. Open the matching file in `Stitch Ui/` (HTML + PNG). Mapping is in `Stitch Ui/tokens.json`.
+2. Copy structure, copy, bilingual labels, badges, and tap targets from that file.
+3. Use only tokens from `Stitch Ui/tokens.json` (same values as the Tailwind config in every `code (n).html`).
+
+## Hard rules
+
+- Primary is `#005f42`. Surfaces are `#f8f9ff` / `#ffffff`. Text is `#0b1c30`. Never Expo blue, never a different green.
+- Headlines: Plus Jakarta Sans. Body/labels: Noto Sans. Icons: Material Symbols Outlined.
+- Primary CTA: full width, min height 52px, `rounded-xl`, `primary` fill, `on-primary` text.
+- Tap targets ≥ 48dp. Inputs min height 52px. Horizontal margin 16px.
+- English label + Urdu in parentheses on the same row, as in Stitch.
+- Worker tabs: Jobs / Applications / Profile. Business tabs: Jobs / Applications / Profile.
+- Do not “improve”, restyle, or drop trust bars (“100% Free”), WhatsApp/Call buttons, or verification badges.
+
+`DESIGN.md` in that folder is a PNG of the business jobs dashboard, not a separate spec.

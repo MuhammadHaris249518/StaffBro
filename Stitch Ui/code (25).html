@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Post a Job - Staffbro</title>
+<!-- Google Fonts: Plus Jakarta Sans & Noto Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "surface-container-high": "#dce9ff",
+            "surface-variant": "#d3e4fe",
+            "primary-fixed-dim": "#7cd8af",
+            "error-container": "#ffdad6",
+            "on-primary-container": "#a7ffd5",
+            "primary-fixed": "#98f5ca",
+            "on-error-container": "#93000a",
+            "surface-container": "#e5eeff",
+            "on-secondary": "#ffffff",
+            "on-tertiary-container": "#b2ffba",
+            "on-secondary-container": "#586377",
+            "surface": "#f8f9ff",
+            "secondary-container": "#d5e0f8",
+            "inverse-primary": "#7cd8af",
+            "on-background": "#0b1c30",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-fixed": "#66ff8e",
+            "primary-container": "#0d7a57",
+            "surface-tint": "#006c4c",
+            "on-surface-variant": "#3e4943",
+            "on-tertiary-fixed": "#002109",
+            "background": "#f8f9ff",
+            "primary": "#005f42",
+            "tertiary-container": "#007c36",
+            "tertiary": "#006029",
+            "on-primary-fixed-variant": "#005138",
+            "secondary-fixed-dim": "#bcc7de",
+            "inverse-surface": "#213145",
+            "on-tertiary-fixed-variant": "#005322",
+            "tertiary-fixed-dim": "#3de273",
+            "on-primary-fixed": "#002114",
+            "outline-variant": "#bec9c1",
+            "outline": "#6e7a72",
+            "secondary-fixed": "#d8e3fb",
+            "on-surface": "#0b1c30",
+            "on-secondary-fixed": "#111c2d",
+            "surface-container-highest": "#d3e4fe",
+            "surface-dim": "#cbdbf5",
+            "surface-bright": "#f8f9ff",
+            "secondary": "#545f73",
+            "inverse-on-surface": "#eaf1ff",
+            "surface-container-low": "#eff4ff",
+            "on-error": "#ffffff",
+            "error": "#ba1a1a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "gutter-mobile": "0.75rem",
+            "space-xs": "0.25rem",
+            "margin-mobile": "1rem",
+            "gutter": "1rem",
+            "margin": "1.5rem",
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "body-sm": ["Noto Sans"],
+            "body-md": ["Noto Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "label-md": ["Noto Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Noto Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "label-lg": ["Noto Sans"],
+            "body-lg": ["Noto Sans"]
+          },
+          "fontSize": {
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "headline-xl-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "700" }],
+            "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "600" }],
+            "headline-md": ["18px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "headline-xl": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-1 {
+      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Smooth custom scrollbars and form appearance */
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Mobile Viewport Container (Android 360-412dp baseline) -->
+<div class="w-full max-w-md bg-background min-h-screen flex flex-col relative pb-36 shadow-md">
+<!-- Top App Bar (Shared Component Pattern: docked full-width top, no border line rule) -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest shadow-sm flex items-center justify-between px-margin-mobile h-16 transition-shadow">
+<div class="flex items-center gap-2">
+<button aria-label="Go back" class="min-w-[48px] min-h-[48px] flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-primary text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<h1 class="font-headline-md text-headline-md text-on-surface leading-tight tracking-tight">Post a Job</h1>
+<span class="font-label-sm text-label-sm text-secondary font-medium">(نیا اشتہار)</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">Staffbro Business Registry</span>
+</div>
+</div>
+<button class="min-h-[48px] px-3 py-1.5 rounded-lg text-primary font-label-lg text-label-lg hover:bg-surface-container active:scale-95 transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[18px]">bookmark_border</span>
+<span>Save Draft</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin-mobile py-4 space-y-4">
+<!-- 2. Fast Speed Assurance Banner / Step Header -->
+<section class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/30 shadow-sm flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined fill-1 text-[22px]">timer</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1 flex-wrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold">
+              ⚡ Quick Post in 2 Mins
+            </span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Verified Direct Calls</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">
+            No complicated forms. Workers in Islamabad &amp; Rawalpindi will view your vacancy and call or WhatsApp directly.
+          </p>
+</div>
+</section>
+<!-- 3. Basic Job Details (ملازمت کی تفصیلات) -->
+<section class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/30 shadow-sm space-y-4">
+<div class="flex items-center justify-between border-b border-surface-container pb-2.5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">badge</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">1. Basic Details <span class="text-secondary font-normal font-label-md">(بنیادی معلومات)</span></h2>
+</div>
+<span class="font-label-sm text-label-sm text-primary bg-primary/10 px-2 py-0.5 rounded font-bold">Step 1/3</span>
+</div>
+<!-- Job Title Input -->
+<div class="space-y-1.5">
+<label class="block font-label-lg text-label-lg text-on-surface font-semibold" for="job-title-input">
+            Job Title / کیا کام ہے؟ <span class="text-error">*</span>
+</label>
+<div class="relative rounded-lg border border-outline-variant focus-within:border-primary focus-within:ring-1 focus-within:ring-primary bg-surface-container-lowest transition-all">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-[20px]">soup_kitchen</span>
+</div>
+<input class="w-full pl-10 pr-4 py-3.5 bg-transparent border-0 font-body-md text-body-md text-on-surface focus:ring-0 focus:outline-none min-h-[48px]" id="job-title-input" placeholder="e.g. Master Chef, Delivery Rider" type="text" value="Karahi Cook"/>
+</div>
+<p class="font-label-sm text-label-sm text-secondary">Common job search keywords for local restaurant workers.</p>
+</div>
+<!-- Quick Presets Chips -->
+<div class="space-y-1.5">
+<span class="font-label-sm text-label-sm text-secondary font-medium">Quick Suggestions (فوری چناؤ):</span>
+<div class="flex flex-wrap gap-1.5">
+<button class="min-h-[36px] px-3 py-1 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md flex items-center gap-1 shadow-sm active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">check</span>
+              Karahi Cook
+            </button>
+<button class="min-h-[36px] px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant active:scale-95 transition-transform" type="button">
+              Tandoorchi
+            </button>
+<button class="min-h-[36px] px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant active:scale-95 transition-transform" type="button">
+              Head Chef
+            </button>
+<button class="min-h-[36px] px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant active:scale-95 transition-transform" type="button">
+              Waiter
+            </button>
+<button class="min-h-[36px] px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant active:scale-95 transition-transform" type="button">
+              Delivery Rider
+            </button>
+<button class="min-h-[36px] px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant active:scale-95 transition-transform" type="button">
+              Kitchen Helper
+            </button>
+<button class="min-h-[36px] px-3 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant active:scale-95 transition-transform" type="button">
+              Cashier
+            </button>
+</div>
+</div>
+<!-- Trade Category Selector -->
+<div class="space-y-1.5 pt-1">
+<label class="block font-label-lg text-label-lg text-on-surface font-semibold" for="category-select">
+            Profession Sector / شعبہ منتخب کریں <span class="text-error">*</span>
+</label>
+<div class="relative rounded-lg border border-outline-variant bg-surface-container-lowest focus-within:border-primary">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-[20px]">restaurant</span>
+</div>
+<select class="w-full pl-10 pr-10 py-3.5 bg-transparent border-0 font-body-md text-body-md text-on-surface appearance-none focus:ring-0 focus:outline-none min-h-[48px]" id="category-select">
+<option selected="">Food &amp; Hospitality / کچن اور ہوٹل</option>
+<option>Retail &amp; Superstore / دکان اور مارٹ</option>
+<option>Logistics &amp; Delivery / ڈلیوری رائیڈر</option>
+<option>Security &amp; Guarding / سیکیورٹی گارڈ</option>
+<option>Warehouse &amp; Loading / گودام اور لیبر</option>
+</select>
+<div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-secondary">
+<span class="material-symbols-outlined text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Number of Vacancies Stepper -->
+<div class="pt-2">
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-container-low border border-outline-variant/30">
+<div>
+<span class="block font-label-lg text-label-lg text-on-surface font-semibold">Number of Vacancies</span>
+<span class="font-label-sm text-label-sm text-secondary font-normal">کتنے بندے درکار ہیں؟</span>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-lowest px-2 py-1 rounded-lg border border-outline-variant/40">
+<button aria-label="Decrease vacancies" class="w-10 h-10 flex items-center justify-center text-primary rounded hover:bg-surface-container active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[20px]">remove</span>
+</button>
+<span class="font-headline-md text-headline-md text-primary font-bold min-w-[28px] text-center">2</span>
+<button aria-label="Increase vacancies" class="w-10 h-10 flex items-center justify-center text-primary rounded hover:bg-surface-container active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Compensation & Timing (تنخواہ اور اوقات) -->
+<section class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/30 shadow-sm space-y-4">
+<div class="flex items-center justify-between border-b border-surface-container pb-2.5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">payments</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">2. Pay &amp; Timings <span class="text-secondary font-normal font-label-md">(تنخواہ اور اوقات)</span></h2>
+</div>
+<span class="font-label-sm text-label-sm text-primary bg-primary/10 px-2 py-0.5 rounded font-bold">Step 2/3</span>
+</div>
+<!-- Pay Frequency Switch -->
+<div class="space-y-1.5">
+<label class="block font-label-lg text-label-lg text-on-surface font-semibold">Payment Mode / تنخواہ کا طریقہ</label>
+<div class="grid grid-cols-2 gap-2 p-1 bg-surface-container rounded-xl">
+<button class="min-h-[44px] py-2 px-3 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md font-bold shadow-sm flex items-center justify-center gap-1.5 border border-outline-variant/20" type="button">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+              Monthly (ماہانہ)
+            </button>
+<button class="min-h-[44px] py-2 px-3 rounded-lg text-secondary font-label-md text-label-md font-medium flex items-center justify-center gap-1.5 hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[18px]">today</span>
+              Daily Wage (دیہاڑی)
+            </button>
+</div>
+</div>
+<!-- Salary Range Input in PKR -->
+<div class="space-y-1.5">
+<label class="block font-label-lg text-label-lg text-on-surface font-semibold">
+            Salary Range / تنخواہ کی حد (PKR) <span class="text-error">*</span>
+</label>
+<div class="grid grid-cols-2 gap-2.5">
+<!-- Min Salary -->
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-secondary">Minimum (کم از کم)</span>
+<div class="relative rounded-lg border border-outline-variant bg-surface-container-lowest focus-within:border-primary">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center text-secondary font-label-sm text-label-sm font-bold">PKR</span>
+<input class="w-full pl-11 pr-3 py-3 font-body-md text-body-md text-on-surface bg-transparent border-0 focus:ring-0 min-h-[48px]" placeholder="Min" type="text" value="40,000"/>
+</div>
+</div>
+<!-- Max Salary -->
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-secondary">Maximum (زیادہ سے زیادہ)</span>
+<div class="relative rounded-lg border border-outline-variant bg-surface-container-lowest focus-within:border-primary">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center text-secondary font-label-sm text-label-sm font-bold">PKR</span>
+<input class="w-full pl-11 pr-3 py-3 font-body-md text-body-md text-on-surface bg-transparent border-0 focus:ring-0 min-h-[48px]" placeholder="Max" type="text" value="50,000"/>
+</div>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+            Competitive range for Islamabad cooks (Avg: Rs 42k - 48k/mo)
+          </p>
+</div>
+<!-- Employment Type Chips -->
+<div class="space-y-1.5 pt-1">
+<label class="block font-label-lg text-label-lg text-on-surface font-semibold">Shift &amp; Job Type / نوکری کی نوعیت</label>
+<div class="grid grid-cols-3 gap-2">
+<label class="cursor-pointer min-h-[48px] rounded-lg border-2 border-primary bg-primary/5 p-2 flex flex-col items-center justify-center text-center">
+<input checked="" class="sr-only" name="job_nature" type="radio"/>
+<span class="font-label-md text-label-md text-primary font-bold">Full-time</span>
+<span class="font-label-sm text-label-sm text-primary">مکمل وقت</span>
+</label>
+<label class="cursor-pointer min-h-[48px] rounded-lg border border-outline-variant bg-surface-container-lowest p-2 flex flex-col items-center justify-center text-center hover:bg-surface-container-low">
+<input class="sr-only" name="job_nature" type="radio"/>
+<span class="font-label-md text-label-md text-on-surface font-medium">Part-time</span>
+<span class="font-label-sm text-label-sm text-secondary">جزوی وقت</span>
+</label>
+<label class="cursor-pointer min-h-[48px] rounded-lg border border-outline-variant bg-surface-container-lowest p-2 flex flex-col items-center justify-center text-center hover:bg-surface-container-low">
+<input class="sr-only" name="job_nature" type="radio"/>
+<span class="font-label-md text-label-md text-on-surface font-medium">Daily</span>
+<span class="font-label-sm text-label-sm text-secondary">دیہاڑی</span>
+</label>
+</div>
+</div>
+</section>
+<!-- 5. Perks & Facilities Provided (اضافی سہولیات - Attract Frontline Workers) -->
+<section class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/30 shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">3. Perks &amp; Facilities</h2>
+<p class="font-label-sm text-label-sm text-secondary">ملازمین کے لیے اضافی سہولیات (Highlight attractive perks)</p>
+</div>
+<span class="material-symbols-outlined text-primary text-[24px]">stars</span>
+</div>
+<div class="grid grid-cols-2 gap-2.5 pt-1">
+<!-- Perk 1: Meals (Checked) -->
+<label class="cursor-pointer min-h-[58px] p-2.5 rounded-xl border-2 border-primary bg-primary/5 flex items-start gap-2.5">
+<div class="w-5 h-5 mt-0.5 rounded bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[18px]">lunch_dining</span>
+<span class="font-label-md text-label-md text-primary font-bold">Free Meals</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">کھانا شامل ہے</span>
+</div>
+</label>
+<!-- Perk 2: Accommodation (Checked) -->
+<label class="cursor-pointer min-h-[58px] p-2.5 rounded-xl border-2 border-primary bg-primary/5 flex items-start gap-2.5">
+<div class="w-5 h-5 mt-0.5 rounded bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[18px]">bed</span>
+<span class="font-label-md text-label-md text-primary font-bold">Free Room</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">رہائش دی جائے گی</span>
+</div>
+</label>
+<!-- Perk 3: Tips / Service Charge (Unchecked) -->
+<label class="cursor-pointer min-h-[58px] p-2.5 rounded-xl border border-outline-variant/60 bg-surface-container-lowest flex items-start gap-2.5 hover:bg-surface-container-low">
+<div class="w-5 h-5 mt-0.5 rounded border border-outline-variant bg-surface-container-lowest flex items-center justify-center shrink-0">
+<!-- unchecked -->
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[18px]">paid</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Tips &amp; Bonus</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary block">ٹپس اور سروس چارج</span>
+</div>
+</label>
+<!-- Perk 4: Weekly Off Day (Checked) -->
+<label class="cursor-pointer min-h-[58px] p-2.5 rounded-xl border-2 border-primary bg-primary/5 flex items-start gap-2.5">
+<div class="w-5 h-5 mt-0.5 rounded bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[18px]">event_available</span>
+<span class="font-label-md text-label-md text-primary font-bold">Weekly Off</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">ہفتہ وار چھٹی (Tue)</span>
+</div>
+</label>
+</div>
+</section>
+<!-- 6. Experience & Requirements (تجربہ اور شرائط) -->
+<section class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/30 shadow-sm space-y-3.5">
+<div class="flex items-center gap-2 border-b border-surface-container pb-2">
+<span class="material-symbols-outlined text-primary text-[20px]">verified_user</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">4. Worker Requirements <span class="text-secondary font-normal font-label-md">(شرائط)</span></h2>
+</div>
+<!-- Experience Required -->
+<div class="space-y-1.5">
+<label class="block font-label-lg text-label-lg text-on-surface font-semibold">Minimum Experience / مطلوبہ تجربہ</label>
+<div class="grid grid-cols-3 gap-2">
+<button class="min-h-[44px] py-1.5 px-2 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md font-medium text-center" type="button">
+              Fresh / 0 Exp
+            </button>
+<button class="min-h-[44px] py-1.5 px-2 rounded-lg bg-primary-container text-on-primary-container font-label-md text-label-md font-bold text-center border border-primary" type="button">
+              1 - 2 Years ✓
+            </button>
+<button class="min-h-[44px] py-1.5 px-2 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md font-medium text-center" type="button">
+              3+ Years (استاد)
+            </button>
+</div>
+</div>
+<!-- Mandatory Skill Tags -->
+<div class="space-y-1.5">
+<label class="block font-label-lg text-label-lg text-on-surface font-semibold">Specific Skills Needed / ہنر و مہارت</label>
+<div class="flex flex-wrap gap-2">
+<button class="min-h-[38px] px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/40 font-label-md text-label-md font-bold flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">check</span>
+              Shinwari Karahi
+            </button>
+<button class="min-h-[38px] px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/40 font-label-md text-label-md font-bold flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">check</span>
+              Knife &amp; Prep
+            </button>
+<button class="min-h-[38px] px-3 py-1.5 rounded-full bg-surface-container text-secondary font-label-md text-label-md" type="button">
+              + Tandoor Baking
+            </button>
+<button class="min-h-[38px] px-3 py-1.5 rounded-full bg-surface-container text-secondary font-label-md text-label-md" type="button">
+              + Hand Hygiene
+            </button>
+<button class="min-h-[38px] px-3 py-1.5 rounded-full bg-surface-container text-secondary font-label-md text-label-md" type="button">
+              + Dum Pukht
+            </button>
+</div>
+</div>
+<!-- CNIC Requirement Checkbox (High trust standard) -->
+<div class="pt-1">
+<label class="cursor-pointer min-h-[48px] p-3 rounded-xl bg-surface-container-low border border-outline-variant/40 flex items-center gap-3">
+<input checked="" class="w-5 h-5 rounded text-primary focus:ring-primary border-outline-variant" type="checkbox"/>
+<div class="flex-1">
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">Valid CNIC Mandatory</span>
+<span class="inline-flex items-center px-1.5 py-0.2 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold">Verified Only</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">اصل قومی شناختی کارڈ رکھنے والے ملازمین رابطہ کریں</p>
+</div>
+</label>
+</div>
+</section>
+<!-- 7. Workplace Location & Contact Transparency -->
+<section class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/30 shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">location_on</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">5. Workplace Branch</h2>
+</div>
+<button class="text-primary font-label-md text-label-md font-semibold hover:underline" type="button">Change</button>
+</div>
+<!-- Branch Display Card -->
+<div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/30 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[22px]">storefront</span>
+</div>
+<div class="flex-1">
+<h3 class="font-label-lg text-label-lg text-on-surface font-bold">Khyber Shinwari BBQ &amp; Karahi</h3>
+<p class="font-body-sm text-body-sm text-secondary">Shop 4-B, Markaz F-10, Islamabad</p>
+</div>
+<span class="material-symbols-outlined text-tertiary fill-1 text-[20px]">check_circle</span>
+</div>
+<!-- Direct Contact Clarity Callout -->
+<div class="p-3 rounded-lg bg-surface-variant/40 border border-outline-variant/40 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">contact_phone</span>
+<p class="font-body-sm text-body-sm text-on-surface">
+<strong>Phone &amp; WhatsApp Active:</strong> Your registered number <span class="font-bold text-on-surface-variant">(+92 300 5894120)</span> will be provided to verified applicants for instant phone calling and WhatsApp messaging.
+          </p>
+</div>
+</section>
+</main>
+<!-- 8. Sticky Action Footer (High Elevation Level 3, No border lines) -->
+<div class="fixed bottom-0 left-0 right-0 max-w-md mx-auto z-50 bg-surface-container-lowest p-margin-mobile shadow-[0_-2px_8px_0_rgba(15,23,42,0.08)]">
+<div class="flex flex-col gap-2">
+<!-- Prominent Primary Emerald Button with Icon -->
+<button class="w-full min-h-[52px] px-6 py-3 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow hover:bg-primary active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined fill-1 text-[22px]">send</span>
+<span>Publish Job Vacancy (اشتہار شائع کریں)</span>
+</button>
+<!-- Trust verification reassurance microcopy -->
+<div class="flex items-center justify-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[16px] text-tertiary">verified</span>
+<p class="font-label-sm text-label-sm text-center">
+            Goes live immediately after a 1-minute automated safety review
+          </p>
+</div>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Staffbro - Worker Profile &amp; Completeness</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;0,800;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-container": "#0d7a57",
+            "on-primary-container": "#a7ffd5",
+            "secondary": "#545f73",
+            "on-secondary-fixed": "#111c2d",
+            "on-secondary-container": "#586377",
+            "on-secondary": "#ffffff",
+            "primary": "#005f42",
+            "tertiary-fixed-dim": "#3de273",
+            "primary-fixed-dim": "#7cd8af",
+            "on-tertiary-container": "#b2ffba",
+            "on-surface": "#0b1c30",
+            "surface": "#f8f9ff",
+            "on-tertiary": "#ffffff",
+            "surface-container-highest": "#d3e4fe",
+            "on-surface-variant": "#3e4943",
+            "secondary-fixed": "#d8e3fb",
+            "secondary-fixed-dim": "#bcc7de",
+            "secondary-container": "#d5e0f8",
+            "on-error-container": "#93000a",
+            "surface-container-high": "#dce9ff",
+            "on-primary-fixed-variant": "#005138",
+            "inverse-primary": "#7cd8af",
+            "surface-variant": "#d3e4fe",
+            "outline-variant": "#bec9c1",
+            "error": "#ba1a1a",
+            "tertiary": "#006029",
+            "on-primary": "#ffffff",
+            "inverse-surface": "#213145",
+            "on-error": "#ffffff",
+            "outline": "#6e7a72",
+            "on-primary-fixed": "#002114",
+            "on-background": "#0b1c30",
+            "on-tertiary-fixed": "#002109",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#eff4ff",
+            "primary-fixed": "#98f5ca",
+            "surface-tint": "#006c4c",
+            "on-secondary-fixed-variant": "#3c475a",
+            "background": "#f8f9ff",
+            "error-container": "#ffdad6",
+            "tertiary-fixed": "#66ff8e",
+            "surface-container": "#e5eeff",
+            "surface-dim": "#cbdbf5",
+            "inverse-on-surface": "#eaf1ff",
+            "on-tertiary-fixed-variant": "#005322",
+            "tertiary-container": "#007c36",
+            "surface-bright": "#f8f9ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "gutter-mobile": "0.75rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-md": "1rem",
+            "margin": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-md": [
+              "Plus Jakarta Sans"
+            ],
+            "headline-xl-mobile": [
+              "Plus Jakarta Sans"
+            ],
+            "headline-xl": [
+              "Plus Jakarta Sans"
+            ],
+            "label-lg": [
+              "Noto Sans"
+            ],
+            "body-md": [
+              "Noto Sans"
+            ],
+            "body-sm": [
+              "Noto Sans"
+            ],
+            "headline-lg": [
+              "Plus Jakarta Sans"
+            ],
+            "headline-lg-mobile": [
+              "Plus Jakarta Sans"
+            ],
+            "body-lg": [
+              "Noto Sans"
+            ],
+            "label-sm": [
+              "Noto Sans"
+            ],
+            "label-md": [
+              "Noto Sans"
+            ]
+          },
+          "fontSize": {
+            "headline-md": [
+              "18px",
+              {
+                "lineHeight": "26px",
+                "fontWeight": "600"
+              }
+            ],
+            "headline-xl-mobile": [
+              "26px",
+              {
+                "lineHeight": "34px",
+                "fontWeight": "700"
+              }
+            ],
+            "headline-xl": [
+              "32px",
+              {
+                "lineHeight": "40px",
+                "fontWeight": "700"
+              }
+            ],
+            "label-lg": [
+              "14px",
+              {
+                "lineHeight": "20px",
+                "fontWeight": "600"
+              }
+            ],
+            "body-md": [
+              "14px",
+              {
+                "lineHeight": "22px",
+                "fontWeight": "400"
+              }
+            ],
+            "body-sm": [
+              "13px",
+              {
+                "lineHeight": "18px",
+                "fontWeight": "400"
+              }
+            ],
+            "headline-lg": [
+              "24px",
+              {
+                "lineHeight": "32px",
+                "fontWeight": "700"
+              }
+            ],
+            "headline-lg-mobile": [
+              "20px",
+              {
+                "lineHeight": "28px",
+                "fontWeight": "700"
+              }
+            ],
+            "body-lg": [
+              "16px",
+              {
+                "lineHeight": "24px",
+                "fontWeight": "500"
+              }
+            ],
+            "label-sm": [
+              "11px",
+              {
+                "lineHeight": "14px",
+                "fontWeight": "600"
+              }
+            ],
+            "label-md": [
+              "12px",
+              {
+                "lineHeight": "16px",
+                "fontWeight": "600"
+              }
+            ]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen pb-28 flex flex-col items-center">
+<!-- Mobile Viewport Container (360px - 420px standard) -->
+<div class="w-full max-w-[420px] bg-background min-h-screen flex flex-col relative shadow-lg">
+<!-- Top App Bar (Shared Component Anchor Implementation) -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest text-primary shadow-sm flex justify-between items-center w-full px-margin-mobile h-14">
+<!-- Leading Icon + Text -->
+<button class="flex items-center gap-1 min-h-[48px] min-w-[48px] px-2 -ml-2 text-primary hover:bg-surface-container-high transition-colors active:scale-95 duration-150 rounded-lg" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+<span class="font-label-md text-label-md text-primary font-bold">Back</span>
+</button>
+<!-- Center Title with Bilingual Cues -->
+<div class="text-center flex-1 mx-2">
+<h1 class="font-headline-md text-headline-md text-primary font-bold truncate">
+          Worker Profile <span class="text-secondary font-normal text-body-sm">(میری پروفائل)</span>
+</h1>
+</div>
+<!-- Trailing Action: Save Button -->
+<button class="flex items-center justify-center min-h-[48px] px-3 -mr-2 text-primary hover:bg-surface-container-high transition-colors active:scale-95 duration-150 rounded-lg" type="button">
+<span class="material-symbols-outlined text-[20px] mr-1">check</span>
+<span class="font-label-md text-label-md text-primary font-bold">Save</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 px-margin-mobile pt-space-md space-y-space-md">
+<!-- Header Section: Avatar, Name, Verification, Profession -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-slate-200 shadow-sm flex flex-col items-center text-center relative overflow-hidden">
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-primary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Avatar Container with Camera Badge -->
+<div class="relative mb-3">
+<div class="w-24 h-24 rounded-full p-1 border-2 border-primary-container bg-surface-container-low shadow-sm">
+<img class="w-full h-full rounded-full object-cover" data-alt="A front-facing professional headshot of a friendly 28-year-old Pakistani male chef wearing a crisp white kitchen uniform and chef hat. The background shows an authentic commercial stainless-steel restaurant kitchen with warm, diffused lighting. High contrast, sharp detail, welcoming trustworthy smile representing safe frontline employment in Islamabad." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOFb8Pb_bu35VRxb8L8pNyh6Etg_RcrDcB2Wlx95Qs18ZZj_XDWeYV5yIPunOJ0tdAVqw2zQIdy8zzRfdSp14yykqxskwiYtxliW8DJoZVuwZvCaXw8ZMLanEDANcQV3-EpCTOtulxdA8pjFe4jf81HLh614w9iF_Wpj1n9dfc1BVg2GwM99Q4Wc_5iw-5xvE5oLVrPAOAIpkGbRDB42r4dtYnkn8k_g_zWmY-pisxtYilFJSf5Zo"/>
+</div>
+<!-- Camera Action Target (Min 48dp clickable wrapper) -->
+<button aria-label="Add or change photo" class="absolute bottom-0 right-0 translate-x-1 translate-y-1 w-10 h-10 bg-primary-container text-on-primary rounded-full shadow-md flex items-center justify-center border-2 border-surface-container-lowest active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[20px]">photo_camera</span>
+</button>
+</div>
+<!-- Photo Hiring Benefit Helper Tag -->
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-secondary text-label-sm font-label-sm mb-3">
+<span class="material-symbols-outlined text-[14px] text-primary-container" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span>Photo helps you get hired <strong>2x faster</strong></span>
+</div>
+<!-- Worker Name -->
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface font-bold">
+          Muhammad Usman
+        </h2>
+<!-- Profession Pill -->
+<div class="mt-1 inline-flex items-center gap-1.5 px-3 py-1 bg-surface-container-low rounded-lg border border-slate-200">
+<span class="material-symbols-outlined text-[16px] text-primary">restaurant</span>
+<span class="font-label-md text-label-md text-primary font-bold">Head Chef / Karahi Specialist</span>
+</div>
+<!-- Verified Phone Badge -->
+<div class="mt-2.5 flex items-center gap-1.5 text-tertiary">
+<div class="w-5 h-5 rounded-full bg-emerald-50 text-tertiary flex items-center justify-center border border-tertiary/20">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-tertiary">Phone Confirmed (فون تصدیق شدہ)</span>
+</div>
+</section>
+<!-- Completeness Meter Card (Gamified & Bilingual) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-slate-200 shadow-sm relative overflow-hidden">
+<div class="flex items-start justify-between gap-2 mb-2">
+<div>
+<div class="flex items-center gap-1 text-primary mb-0.5">
+<span class="material-symbols-outlined text-[18px]">military_tech</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">Priority Status</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">
+              Profile Completeness: <span class="text-primary-container">75%</span>
+</h3>
+<p class="font-label-sm text-label-sm text-secondary">(پروفائل مکمل کریں - مزید آفرز حاصل کریں)</p>
+</div>
+<span class="px-2.5 py-1 bg-primary-fixed text-on-primary-fixed-variant rounded-full text-label-sm font-bold border border-primary-container/20">
+            75 / 100
+          </span>
+</div>
+<!-- Progress Bar (Material 3 Emerald Tone) -->
+<div class="w-full bg-surface-container h-3 rounded-full overflow-hidden my-3 border border-slate-200">
+<div class="bg-primary-container h-full rounded-full transition-all duration-500 w-[75%] shadow-sm"></div>
+</div>
+<!-- Checklist of Profile Segments -->
+<div class="space-y-2 mt-3 pt-2 border-t border-slate-100">
+<!-- Item 1 Done -->
+<div class="flex items-center justify-between py-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-tertiary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Full Name &amp; Phone Number</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary font-bold">+20%</span>
+</div>
+<!-- Item 2 Done -->
+<div class="flex items-center justify-between py-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-tertiary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Primary Profession &amp; Salary</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary font-bold">+20%</span>
+</div>
+<!-- Item 3 Done -->
+<div class="flex items-center justify-between py-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-tertiary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Experience &amp; Skills added</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary font-bold">+20%</span>
+</div>
+<!-- Item 4 Done -->
+<div class="flex items-center justify-between py-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-tertiary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">Phone Confirmed via WhatsApp</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary font-bold">+15%</span>
+</div>
+<!-- Item 5 Pending (CNIC Verification) -->
+<div class="flex items-center justify-between py-2 px-2.5 rounded-lg bg-amber-50/70 border border-amber-200/60 mt-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-amber-600">radio_button_unchecked</span>
+<div>
+<p class="font-label-md text-label-md font-bold text-amber-950">ID / CNIC Verification (شناختی کارڈ)</p>
+<p class="font-label-sm text-label-sm text-amber-800">Pending upload for "Verified Worker" badge</p>
+</div>
+</div>
+<button class="min-h-[36px] px-3 bg-amber-600 text-white rounded-lg text-label-sm font-bold flex items-center gap-1 active:scale-95 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">upload</span>
+<span>Upload (+25%)</span>
+</button>
+</div>
+</div>
+<!-- Search Rank Benefit Explainer -->
+<div class="mt-3.5 pt-2.5 border-t border-slate-100 flex items-start gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary flex-shrink-0 mt-0.5">trending_up</span>
+<p class="font-body-sm text-body-sm text-secondary">
+            Complete 100% to appear at the top of restaurant manager searches in <strong class="text-on-surface">Islamabad &amp; Rawalpindi</strong>.
+          </p>
+</div>
+</section>
+<!-- Visibility & Privacy Toggles Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-slate-200 shadow-sm space-y-4">
+<div class="flex items-center gap-2 border-b border-slate-100 pb-2">
+<span class="material-symbols-outlined text-[20px] text-primary">visibility</span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">
+            Profile Visibility &amp; Offers
+          </h3>
+</div>
+<!-- Toggle 1: Show me to businesses -->
+<div class="flex items-start justify-between gap-3 pt-1">
+<div class="flex-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">storefront</span>
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface">
+                Show me to businesses
+              </h4>
+</div>
+<p class="font-label-sm text-label-sm text-primary font-medium mt-0.5">(کاروبار کو نظر آئیں)</p>
+<p class="font-body-sm text-body-sm text-secondary mt-1 leading-snug">
+              When turned on, verified employers can discover your profile and send direct job offers.
+            </p>
+</div>
+<!-- Android MD3 Switch (Active State) -->
+<label class="relative inline-flex items-center cursor-pointer min-h-[48px] min-w-[52px] justify-center">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-7 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[12px] after:left-[4px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<div class="border-t border-slate-100"></div>
+<!-- Toggle 2: Accept direct job offers -->
+<div class="flex items-start justify-between gap-3">
+<div class="flex-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">send</span>
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface">
+                Accept direct job offers
+              </h4>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mt-1 leading-snug">
+              Allow restaurants &amp; hotels to send interview requests directly to your app.
+            </p>
+</div>
+<!-- Android MD3 Switch (Active State) -->
+<label class="relative inline-flex items-center cursor-pointer min-h-[48px] min-w-[52px] justify-center">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-7 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[12px] after:left-[4px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+</div>
+<!-- Privacy Assurance Note -->
+<div class="p-3 bg-surface-container-low rounded-lg border border-slate-200 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-primary flex-shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">shield</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-tight">
+<strong>Privacy Protection:</strong> Your phone number is <em>NEVER</em> shown publicly. Revealed only when you accept an offer or apply to a job.
+          </p>
+</div>
+</section>
+<!-- Section 1: Primary Profession & Commute -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-slate-200 shadow-sm space-y-3">
+<div class="flex items-center justify-between border-b border-slate-100 pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">work_outline</span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">1. Profession &amp; Commute</h3>
+</div>
+<span class="text-label-sm text-secondary font-bold">(پیشہ اور علاقہ)</span>
+</div>
+<!-- Profession Selector -->
+<div>
+<label class="block font-label-lg text-label-lg text-on-surface font-semibold mb-1">
+            Primary Profession (بنیادی پیشہ)
+          </label>
+<div class="relative">
+<div class="min-h-[52px] w-full px-3.5 py-3 rounded-lg border border-slate-300 bg-surface-container-lowest flex items-center justify-between focus-within:border-primary-container focus-within:ring-1 focus-within:ring-primary-container">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-secondary">skillet</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">Head Cook / Karahi Specialist</span>
+</div>
+<span class="material-symbols-outlined text-[20px] text-secondary">arrow_drop_down</span>
+</div>
+</div>
+</div>
+<!-- Commute Scope Segmented Selector -->
+<div>
+<label class="block font-label-lg text-label-lg text-on-surface font-semibold mb-1">
+            Commute Scope (کہاں تک کام کر سکتے ہیں؟)
+          </label>
+<div class="grid grid-cols-3 gap-2">
+<button class="min-h-[48px] py-2 px-1 text-center rounded-lg border border-slate-300 font-label-sm text-label-sm text-secondary bg-surface-container-lowest hover:bg-surface-container transition-colors" type="button">
+              My Area
+            </button>
+<button class="min-h-[48px] py-2 px-1 text-center rounded-lg border border-slate-300 font-label-sm text-label-sm text-secondary bg-surface-container-lowest hover:bg-surface-container transition-colors" type="button">
+              My City
+            </button>
+<button class="min-h-[48px] py-2 px-1 text-center rounded-lg border-2 border-primary-container bg-emerald-50/70 font-label-sm text-label-sm text-primary font-bold shadow-xs flex items-center justify-center gap-1" type="button">
+<span class="material-symbols-outlined text-[14px]">check</span>
+<span>Twin Cities</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mt-1">Ready to work across both Islamabad and Rawalpindi.</p>
+</div>
+<!-- Current Locality -->
+<div>
+<label class="block font-label-lg text-label-lg text-on-surface font-semibold mb-1">
+            Current Locality / Neighborhood (موجودہ رہائش)
+          </label>
+<div class="min-h-[52px] w-full px-3.5 py-3 rounded-lg border border-slate-300 bg-surface-container-lowest flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">location_on</span>
+<span class="font-body-md text-body-md text-on-surface">G-9 / Karachi Company, Islamabad</span>
+</div>
+</div>
+</section>
+<!-- Section 2: Salary & Availability -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-slate-200 shadow-sm space-y-3">
+<div class="flex items-center justify-between border-b border-slate-100 pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">payments</span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">2. Salary &amp; Availability</h3>
+</div>
+<span class="text-label-sm text-secondary font-bold">(تنخواہ اور دستیابی)</span>
+</div>
+<!-- Expected Monthly Salary -->
+<div>
+<label class="block font-label-lg text-label-lg text-on-surface font-semibold mb-1">
+            Expected Monthly Salary (ماہانہ متوقع تنخواہ)
+          </label>
+<div class="min-h-[52px] w-full px-3.5 py-3 rounded-lg border border-slate-300 bg-surface-container-lowest flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-tertiary">account_balance_wallet</span>
+<span class="font-headline-md text-headline-md text-on-surface font-bold">PKR 45,000 - 55,000</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">per month</span>
+</div>
+</div>
+<!-- Availability Status -->
+<div>
+<label class="block font-label-lg text-label-lg text-on-surface font-semibold mb-1">
+            Availability to Start (کب شروع کر سکتے ہیں؟)
+          </label>
+<div class="grid grid-cols-3 gap-2">
+<button class="min-h-[48px] py-2 px-1 text-center rounded-lg border-2 border-primary-container bg-emerald-50/70 font-label-sm text-label-sm text-primary font-bold flex flex-col items-center justify-center" type="button">
+<span class="flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+<span>Immediate</span>
+</span>
+<span class="text-[10px] font-normal text-tertiary">(فوری دستیاب)</span>
+</button>
+<button class="min-h-[48px] py-2 px-1 text-center rounded-lg border border-slate-300 font-label-sm text-label-sm text-secondary bg-surface-container-lowest hover:bg-surface-container transition-colors flex flex-col items-center justify-center" type="button">
+<span>In 2 Weeks</span>
+<span class="text-[10px] font-normal">(دو ہفتے میں)</span>
+</button>
+<button class="min-h-[48px] py-2 px-1 text-center rounded-lg border border-slate-300 font-label-sm text-label-sm text-secondary bg-surface-container-lowest hover:bg-surface-container transition-colors flex flex-col items-center justify-center" type="button">
+<span>Not Looking</span>
+<span class="text-[10px] font-normal">(دستیاب نہیں)</span>
+</button>
+</div>
+</div>
+<!-- Employment Type -->
+<div>
+<label class="block font-label-lg text-label-lg text-on-surface font-semibold mb-1">
+            Employment Type
+          </label>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-semibold border border-slate-200">
+<span class="material-symbols-outlined text-[16px] text-primary">schedule</span>
+              Full-time
+            </span>
+<span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md font-semibold border border-slate-200">
+<span class="material-symbols-outlined text-[16px] text-primary">badge</span>
+              Permanent
+            </span>
+</div>
+</div>
+</section>
+<!-- Section 3: Short Bio / About -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-slate-200 shadow-sm space-y-2">
+<div class="flex items-center justify-between border-b border-slate-100 pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">badge</span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">3. Short Bio / About</h3>
+</div>
+<span class="text-label-sm text-secondary font-bold">(مختصر تعارف)</span>
+</div>
+<div>
+<label class="block font-label-lg text-label-lg text-on-surface font-semibold mb-1">
+            About your craft &amp; work ethic
+          </label>
+<div class="p-3 rounded-lg border border-slate-300 bg-surface-container-lowest relative">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+              Karahi and Shinwari specialist with 4+ years running commercial tandoor and meat kitchens in Rawalpindi Food Street. Punctual, non-smoker, ready for evening dinner shifts.
+            </p>
+<div class="flex justify-between items-center mt-2 pt-2 border-t border-slate-100 text-label-sm text-secondary">
+<span class="text-primary font-medium">Clear description helps employers trust you</span>
+<span class="font-mono">184 / 300 chars</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Skills Selected -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-slate-200 shadow-sm space-y-3">
+<div class="flex items-center justify-between border-b border-slate-100 pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">task_alt</span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">4. Skills &amp; Specialities</h3>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold">7 / 15 Added</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">Tap any skill to add or remove from your public badge sheet:</p>
+<!-- Skill Pills Bento Wrap -->
+<div class="flex flex-wrap gap-2">
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-primary border border-primary-container/30 font-label-md text-label-md font-bold shadow-xs">
+<span class="material-symbols-outlined text-[16px] text-tertiary">check</span>
+<span>Shinwari Karahi</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-primary border border-primary-container/30 font-label-md text-label-md font-bold shadow-xs">
+<span class="material-symbols-outlined text-[16px] text-tertiary">check</span>
+<span>Mutton Handi</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-primary border border-primary-container/30 font-label-md text-label-md font-bold shadow-xs">
+<span class="material-symbols-outlined text-[16px] text-tertiary">check</span>
+<span>Koyla BBQ</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-primary border border-primary-container/30 font-label-md text-label-md font-bold shadow-xs">
+<span class="material-symbols-outlined text-[16px] text-tertiary">check</span>
+<span>Kitchen Hygiene</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-primary border border-primary-container/30 font-label-md text-label-md font-bold shadow-xs">
+<span class="material-symbols-outlined text-[16px] text-tertiary">check</span>
+<span>Team Leadership</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-primary border border-primary-container/30 font-label-md text-label-md font-bold shadow-xs">
+<span class="material-symbols-outlined text-[16px] text-tertiary">check</span>
+<span>Inventory Management</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-primary border border-primary-container/30 font-label-md text-label-md font-bold shadow-xs">
+<span class="material-symbols-outlined text-[16px] text-tertiary">check</span>
+<span>Fast Food</span>
+</div>
+</div>
+<!-- Add Skills Button -->
+<button class="w-full min-h-[48px] mt-2 border-2 border-dashed border-primary-container/40 rounded-xl text-primary font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 hover:bg-emerald-50/50 transition-colors active:scale-98" type="button">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span>+ Add More Skills (مزید مہارتیں شامل کریں)</span>
+</button>
+</section>
+<!-- Section 5: Experience List -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-slate-200 shadow-sm space-y-3">
+<div class="flex items-center justify-between border-b border-slate-100 pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary">history_edu</span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">5. Work Experience</h3>
+</div>
+<span class="text-label-sm text-secondary font-bold">(کام کا تجربہ)</span>
+</div>
+<!-- Experience Card 1 -->
+<div class="p-3.5 rounded-xl border border-slate-200 bg-surface-container-low/40 relative">
+<div class="flex items-start justify-between">
+<div>
+<div class="flex items-center gap-1.5">
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface">Head Chef</h4>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-emerald-100 text-tertiary text-[10px] font-bold">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                  Verified
+                </span>
+</div>
+<p class="font-body-sm text-body-sm text-primary font-semibold">Khyber Shinwari Restaurant</p>
+<p class="font-label-sm text-label-sm text-secondary">2022 - Present (2 yrs) • Stadium Road, Rawalpindi</p>
+</div>
+<button aria-label="Edit experience" class="min-w-[48px] min-h-[48px] -mr-2 -mt-2 flex items-center justify-center text-secondary hover:text-primary" type="button">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">
+            Supervised line cooks for live coal tandoor &amp; Karahi section serving 300+ guests during dinner rush daily.
+          </p>
+<div class="mt-2.5 pt-2 border-t border-slate-200/60 flex items-center gap-1 text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[14px] text-tertiary">lock</span>
+<span>Reference contact is verified and private.</span>
+</div>
+</div>
+<!-- Experience Card 2 -->
+<div class="p-3.5 rounded-xl border border-slate-200 bg-surface-container-low/40 relative">
+<div class="flex items-start justify-between">
+<div>
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface">Assistant Karahi Cook</h4>
+<p class="font-body-sm text-body-sm text-primary font-semibold">Usmania Restaurant</p>
+<p class="font-label-sm text-label-sm text-secondary">2020 - 2022 (2 yrs) • Saddar, Rawalpindi</p>
+</div>
+<button aria-label="Edit experience" class="min-w-[48px] min-h-[48px] -mr-2 -mt-2 flex items-center justify-center text-secondary hover:text-primary" type="button">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5">
+            Prepared fresh masalas, monitored meat marinades, and assisted senior handi chefs during peak weekends.
+          </p>
+</div>
+<!-- Add Work Experience Trigger -->
+<button class="w-full min-h-[48px] border-2 border-primary-container bg-surface-container-lowest text-primary rounded-xl font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 hover:bg-emerald-50 transition-colors active:scale-98 shadow-xs" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>+ Add Work Experience (نیا تجربہ شامل کریں)</span>
+</button>
+</section>
+<!-- Save & Preview Floating Footer Section -->
+<section class="py-2 space-y-2">
+<button class="w-full min-h-[48px] bg-primary-container text-on-primary rounded-lg font-label-lg text-label-lg font-bold shadow-md flex items-center justify-center gap-2 active:scale-98 transition-transform" type="button">
+<span class="material-symbols-outlined text-[22px]">save</span>
+<span>Save Profile Changes (تبدیلیاں محفوظ کریں)</span>
+</button>
+<button class="w-full min-h-[48px] bg-surface-container-lowest border border-slate-300 text-secondary rounded-lg font-label-md text-label-md font-semibold flex items-center justify-center gap-1.5 hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">preview</span>
+<span>Preview Public Profile as Employer</span>
+</button>
+</section>
+</main>
+<!-- BottomNavBar (Shared Component JSON Implementation) -->
+<!-- Destination count: 3, Labels: ["Jobs", "Applications", "Profile"], Profile is ACTIVE -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter-mobile py-2 bg-surface-container-lowest dark:bg-inverse-surface shadow-[0_-2px_8px_0_rgba(15,23,42,0.06)] border-t border-outline-variant/20 dark:border-outline/20">
+<!-- Tab 1: Jobs (Inactive) -->
+<a class="flex flex-col items-center justify-center min-w-[48px] min-h-[48px] px-3 py-1 text-secondary dark:text-secondary-fixed-dim font-label-sm text-label-sm hover:bg-surface-container dark:hover:bg-surface-container-highest rounded-xl transition-colors active:scale-95" href="#jobs">
+<span class="material-symbols-outlined text-[24px]">work</span>
+<span class="mt-0.5 font-label-sm text-label-sm">Jobs</span>
+</a>
+<!-- Tab 2: Applications (Inactive) -->
+<a class="flex flex-col items-center justify-center min-w-[48px] min-h-[48px] px-3 py-1 text-secondary dark:text-secondary-fixed-dim font-label-sm text-label-sm hover:bg-surface-container dark:hover:bg-surface-container-highest rounded-xl transition-colors active:scale-95" href="#applications">
+<span class="material-symbols-outlined text-[24px]">assignment</span>
+<span class="mt-0.5 font-label-sm text-label-sm">Applications</span>
+</a>
+<!-- Tab 3: Profile (ACTIVE) -->
+<a class="flex flex-col items-center justify-center min-w-[48px] min-h-[48px] px-3 py-1 bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl font-label-sm text-label-sm active:scale-95 transition-transform duration-150 ease-out" href="#profile">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="mt-0.5 font-label-sm text-label-sm font-bold">Profile</span>
+</a>
+</nav>
+</div>
+</body></html>

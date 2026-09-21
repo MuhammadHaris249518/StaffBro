@@ -1,0 +1,67 @@
+:root {
+  --primary: #005f42;
+  --on-primary: #ffffff;
+  --background: #f8f9ff;
+  --surface: #ffffff;
+  --on-surface: #0b1c30;
+  --secondary: #545f73;
+  --outline: #bec9c1;
+  --error: #ba1a1a;
+  --sans: "Noto Sans", system-ui, sans-serif;
+  --heading: "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  margin: 0;
+  min-height: 100%;
+  background: var(--background);
+  color: var(--on-surface);
+  font-family: var(--sans);
+}
+
+.shell { max-width: 720px; margin: 0 auto; padding: 24px 16px; }
+.shell.wide { max-width: 1080px; }
+
+h1, h2 { font-family: var(--heading); color: var(--primary); margin: 0 0 8px; }
+
+.muted { color: var(--secondary); margin: 0 0 8px; }
+.error { color: var(--error); }
+
+.card, .stat, .item {
+  background: var(--surface);
+  border: 1px solid var(--outline);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.form { display: grid; gap: 12px; }
+label { display: grid; gap: 6px; font-weight: 600; }
+input, select {
+  min-height: 44px;
+  border: 1px solid var(--outline);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font: inherit;
+}
+
+button {
+  min-height: 44px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--primary);
+  color: var(--on-primary);
+  font-weight: 700;
+  padding: 0 16px;
+  cursor: pointer;
+}
+button.ghost { background: transparent; color: var(--primary); border: 1px solid var(--outline); }
+
+.top, .row, .item, .actions { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+.tabs button { background: var(--surface); color: var(--on-surface); border: 1px solid var(--outline); }
+.tabs button.on { background: var(--primary); color: var(--on-primary); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.stat strong { font-size: 28px; color: var(--primary); }
+.item { margin: 12px 0; }

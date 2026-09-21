@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Staffbro - Welcome &amp; Role Choice</title>
+<!-- Fonts: Google Fonts (Noto Sans & Plus Jakarta Sans) -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Plus Jakarta+Sans:ital,wght@0,600;0,700;0,800;1,700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS Play CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary": "#545f73",
+            "on-secondary-fixed-variant": "#3c475a",
+            "secondary-fixed": "#d8e3fb",
+            "inverse-surface": "#213145",
+            "on-tertiary-container": "#b2ffba",
+            "on-primary": "#ffffff",
+            "on-secondary-container": "#586377",
+            "tertiary": "#006029",
+            "error": "#ba1a1a",
+            "on-secondary": "#ffffff",
+            "on-background": "#0b1c30",
+            "on-secondary-fixed": "#111c2d",
+            "primary-fixed": "#98f5ca",
+            "error-container": "#ffdad6",
+            "primary": "#005f42",
+            "inverse-primary": "#7cd8af",
+            "on-tertiary-fixed-variant": "#005322",
+            "background": "#f8f9ff",
+            "surface-variant": "#d3e4fe",
+            "surface-container": "#e5eeff",
+            "on-primary-fixed-variant": "#005138",
+            "tertiary-fixed": "#66ff8e",
+            "surface-tint": "#006c4c",
+            "surface-container-low": "#eff4ff",
+            "outline": "#6e7a72",
+            "outline-variant": "#bec9c1",
+            "on-error": "#ffffff",
+            "surface-dim": "#cbdbf5",
+            "surface-container-highest": "#d3e4fe",
+            "tertiary-container": "#007c36",
+            "on-tertiary": "#ffffff",
+            "primary-fixed-dim": "#7cd8af",
+            "surface-container-high": "#dce9ff",
+            "tertiary-fixed-dim": "#3de273",
+            "secondary-container": "#d5e0f8",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-container": "#a7ffd5",
+            "on-surface-variant": "#3e4943",
+            "on-error-container": "#93000a",
+            "secondary-fixed-dim": "#bcc7de",
+            "on-tertiary-fixed": "#002109",
+            "on-surface": "#0b1c30",
+            "primary-container": "#0d7a57",
+            "inverse-on-surface": "#eaf1ff",
+            "surface": "#f8f9ff",
+            "on-primary-fixed": "#002114",
+            "surface-bright": "#f8f9ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-mobile": "0.75rem",
+            "space-md": "1rem",
+            "space-xl": "2rem",
+            "margin-mobile": "1rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "margin": "1.5rem"
+          },
+          "fontFamily": {
+            "body-md": ["Noto Sans"],
+            "label-sm": ["Noto Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Noto Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "body-lg": ["Noto Sans"],
+            "body-sm": ["Noto Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Noto Sans"],
+            "headline-xl": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "600" }],
+            "headline-md": ["18px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+            "headline-xl-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+            "headline-xl": ["32px", { "lineHeight": "40px", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Android screen preview frame */
+    body {
+      background-color: #e2e8f0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      margin: 0;
+      padding: 1rem 0;
+      font-family: 'Noto Sans', sans-serif;
+    }
+    .mobile-frame {
+      width: 100%;
+      max-width: 390px;
+      min-height: 844px;
+      background-color: #f8f9ff;
+      box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.15), 0 8px 10px -6px rgba(15, 23, 42, 0.1);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+  </style>
+</head>
+<body class="text-on-surface">
+<!-- Mobile Viewport Container -->
+<div class="mobile-frame rounded-2xl border border-outline-variant/30">
+<!-- Top Status Strip & Pilot Region Pill -->
+<div class="w-full bg-surface-container-lowest px-margin-mobile pt-3 pb-1 flex justify-between items-center text-secondary">
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold tracking-wide">Islamabad &amp; Rawalpindi Pilot</span>
+</div>
+<!-- Language Selector Toggle (Accessible min 48px touch target) -->
+<button aria-label="Toggle language between English and Urdu" class="flex items-center justify-center min-h-[48px] px-3 py-1 rounded-full bg-surface-container border border-outline-variant/50 text-primary font-label-md text-label-md active:scale-95 transition-transform" id="langToggle" type="button">
+<span class="material-symbols-outlined text-[16px] mr-1 text-primary">translate</span>
+<span class="font-bold">English</span>
+<span class="text-outline-variant mx-1">/</span>
+<span class="text-on-surface-variant">اردو</span>
+</button>
+</div>
+<!-- Mandatory Shared Component: TopAppBar -->
+<header class="bg-surface-container-lowest flex justify-between items-center w-full px-margin-mobile h-14 shadow-sm border-b border-outline-variant/30">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 rounded-xl bg-primary-fixed flex items-center justify-center text-primary shadow-xs">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">work</span>
+</div>
+<div>
+<span class="text-headline-md font-headline-md text-primary font-bold tracking-tight">Staffbro</span>
+</div>
+</div>
+<!-- Notifications Action (48dp Touch Area) -->
+<button aria-label="Notifications" class="min-w-[48px] min-h-[48px] flex items-center justify-center rounded-full text-secondary hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-secondary text-[24px]">notifications</span>
+</button>
+</header>
+<!-- Trust Alert Bar: 100% Free Guarantee -->
+<div class="bg-primary-fixed/40 border-b border-primary-fixed px-margin-mobile py-2.5 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px] flex-shrink-0" style="font-variation-settings: 'FILL' 1;">verified</span>
+<p class="font-label-sm text-label-sm text-on-primary-fixed-variant leading-tight">
+<strong class="font-bold">100% Free Forever:</strong> Staffbro never charges workers any fee or cut.
+      </p>
+</div>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin-mobile py-4 flex flex-col gap-4">
+<!-- Hero Statement Card -->
+<section class="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/40 shadow-sm relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 bg-primary-fixed/20 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-start justify-between gap-2 mb-1.5">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-secondary-container text-on-secondary-fixed text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+            Direct Hiring
+          </span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Twin Cities</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-1">
+          Rozgar aur Karobaar ka Saath
+        </h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Direct hiring over Phone &amp; WhatsApp for Waiters, Chefs, Riders, Cashiers, Cleaners, and Local Businesses in Islamabad &amp; Rawalpindi.
+        </p>
+</section>
+<!-- Role Selection Section Header -->
+<div class="pt-1">
+<div class="flex items-center gap-1.5 mb-1">
+<span class="material-symbols-outlined text-primary text-[18px]">how_to_reg</span>
+<h2 class="font-label-lg text-label-lg text-on-surface font-bold">Select Your Role (آپ کا کردار)</h2>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">
+          Choose whether you are looking for work or seeking to hire verified staff.
+        </p>
+</div>
+<!-- Bento-style Interactive Role Cards -->
+<div aria-label="Account Role Selection" class="flex flex-col gap-3" role="radiogroup">
+<!-- Role Card 1: Jobseeker / Frontline Worker (Default Selected) -->
+<div aria-checked="true" class="role-card cursor-pointer bg-surface-container-lowest rounded-xl p-4 border-2 border-primary shadow-sm transition-all duration-200 active:scale-[0.99] relative" id="role-worker" onclick="selectRole('worker')" role="radio" tabindex="0">
+<!-- Selection Radio & Indicator -->
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">person_search</span>
+</div>
+<div>
+<span class="inline-block px-2 py-0.5 rounded text-label-sm font-label-sm bg-primary-fixed/50 text-on-primary-fixed-variant mb-0.5">
+                  Job Seeker • ملازمت کی تلاش
+                </span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Main Kaam Dhoond Raha Hoon</h3>
+<p class="font-label-md text-label-md text-secondary">I want a verified Job</p>
+</div>
+</div>
+<!-- Accessible Radio visual (48x48 touch area) -->
+<div class="w-10 h-10 flex items-center justify-center flex-shrink-0">
+<div class="w-6 h-6 rounded-full border-2 border-primary flex items-center justify-center bg-primary" id="radio-worker-indicator">
+<span class="w-2.5 h-2.5 rounded-full bg-surface-container-lowest"></span>
+</div>
+</div>
+</div>
+<!-- Feature Bullets (Clarity-First) -->
+<div class="mt-3 pt-3 border-t border-outline-variant/30 grid grid-cols-1 gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+<span class="font-body-sm text-body-sm text-on-surface">100% Free registration — zero commission</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">call</span>
+<span class="font-body-sm text-body-sm text-on-surface">Direct Call &amp; WhatsApp with employers</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
+<span class="font-body-sm text-body-sm text-on-surface">Twin Cities jobs near your home area</span>
+</div>
+</div>
+</div>
+<!-- Role Card 2: Business Owner / Employer -->
+<div aria-checked="false" class="role-card cursor-pointer bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/50 shadow-sm hover:border-outline transition-all duration-200 active:scale-[0.99] relative" id="role-business" onclick="selectRole('business')" role="radio" tabindex="0">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-secondary flex-shrink-0">
+<span class="material-symbols-outlined text-[28px]">storefront</span>
+</div>
+<div>
+<span class="inline-block px-2 py-0.5 rounded text-label-sm font-label-sm bg-surface-container text-on-secondary-container mb-0.5">
+                  Employer • کاروباری مالک / منیجر
+                </span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Mujhe Staff Chahiye</h3>
+<p class="font-label-md text-label-md text-secondary">I want to Hire Verified Staff</p>
+</div>
+</div>
+<!-- Radio visual -->
+<div class="w-10 h-10 flex items-center justify-center flex-shrink-0">
+<div class="w-6 h-6 rounded-full border-2 border-outline flex items-center justify-center bg-transparent" id="radio-business-indicator">
+<span class="w-2.5 h-2.5 rounded-full bg-transparent"></span>
+</div>
+</div>
+</div>
+<!-- Feature Bullets -->
+<div class="mt-3 pt-3 border-t border-outline-variant/30 grid grid-cols-1 gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">badge</span>
+<span class="font-body-sm text-body-sm text-on-surface">Verified CNIC &amp; reference checked staff</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">timer</span>
+<span class="font-body-sm text-body-sm text-on-surface">Post job vacancies in less than 2 minutes</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">chat</span>
+<span class="font-body-sm text-body-sm text-on-surface">Contact applicants directly via WhatsApp &amp; Phone</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Trust Indicators Banner -->
+<div class="bg-surface-container-low rounded-lg p-3 flex items-center justify-around border border-outline-variant/20 mt-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">verified_user</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold">NADRA Verified</span>
+</div>
+<div class="w-px h-4 bg-outline-variant/50"></div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">support_agent</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold">Urdu Audio Help</span>
+</div>
+<div class="w-px h-4 bg-outline-variant/50"></div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">local_police</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold">Police Check</span>
+</div>
+</div>
+</main>
+<!-- Sticky Bottom CTA Section -->
+<footer class="bg-surface-container-lowest p-margin-mobile border-t border-outline-variant/20 shadow-[0_-2px_8px_0_rgba(15,23,42,0.06)] flex flex-col gap-2.5">
+<!-- Primary Action CTA Button (Min 52dp height, full width) -->
+<button class="w-full min-h-[52px] bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg rounded-xl flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-transform" id="submitRoleBtn" type="button">
+<span>Continue as Job Seeker</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<!-- Secondary CTA: Login Redirect (Min 48dp touch area) -->
+<div class="flex items-center justify-center min-h-[48px]">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Already have an account?</span>
+<a class="font-label-lg text-label-lg text-primary hover:underline ml-1 font-bold inline-flex items-center py-2 px-1" href="#login">
+          Log In (لاگ ان کریں)
+        </a>
+</div>
+<!-- Footer Micro Info -->
+<div class="text-center pb-1">
+<p class="font-label-sm text-label-sm text-secondary">
+          Staffbro Technologies • Islamabad, Pakistan
+        </p>
+</div>
+</footer>
+</div>
+<!-- Interactive Logic for Role Selection & Language Feedback -->
+<script>
+    let currentRole = 'worker';
+
+    function selectRole(role) {
+      currentRole = role;
+      const workerCard = document.getElementById('role-worker');
+      const businessCard = document.getElementById('role-business');
+      const workerRadio = document.getElementById('radio-worker-indicator');
+      const businessRadio = document.getElementById('radio-business-indicator');
+      const submitBtn = document.getElementById('submitRoleBtn');
+
+      if (role === 'worker') {
+        // Update Worker Card to Active
+        workerCard.classList.add('border-2', 'border-primary');
+        workerCard.classList.remove('border', 'border-outline-variant/50');
+        workerCard.setAttribute('aria-checked', 'true');
+        workerRadio.className = 'w-6 h-6 rounded-full border-2 border-primary flex items-center justify-center bg-primary';
+        workerRadio.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-surface-container-lowest"></span>';
+
+        // Update Business Card to Inactive
+        businessCard.classList.remove('border-2', 'border-primary');
+        businessCard.classList.add('border', 'border-outline-variant/50');
+        businessCard.setAttribute('aria-checked', 'false');
+        businessRadio.className = 'w-6 h-6 rounded-full border-2 border-outline flex items-center justify-center bg-transparent';
+        businessRadio.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-transparent"></span>';
+
+        // Update Primary CTA Label
+        submitBtn.innerHTML = '<span>Continue as Job Seeker</span><span class="material-symbols-outlined text-[20px]">arrow_forward</span>';
+      } else {
+        // Update Business Card to Active
+        businessCard.classList.add('border-2', 'border-primary');
+        businessCard.classList.remove('border', 'border-outline-variant/50');
+        businessCard.setAttribute('aria-checked', 'true');
+        businessRadio.className = 'w-6 h-6 rounded-full border-2 border-primary flex items-center justify-center bg-primary';
+        businessRadio.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-surface-container-lowest"></span>';
+
+        // Update Worker Card to Inactive
+        workerCard.classList.remove('border-2', 'border-primary');
+        workerCard.classList.add('border', 'border-outline-variant/50');
+        workerCard.setAttribute('aria-checked', 'false');
+        workerRadio.className = 'w-6 h-6 rounded-full border-2 border-outline flex items-center justify-center bg-transparent';
+        workerRadio.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-transparent"></span>';
+
+        // Update Primary CTA Label
+        submitBtn.innerHTML = '<span>Continue as Employer</span><span class="material-symbols-outlined text-[20px]">arrow_forward</span>';
+      }
+    }
+
+    // Language Toggle interaction feedback
+    const langBtn = document.getElementById('langToggle');
+    let isUrduPrimary = false;
+    langBtn.addEventListener('click', () => {
+      isUrduPrimary = !isUrduPrimary;
+      if (isUrduPrimary) {
+        langBtn.innerHTML = `
+          <span class="material-symbols-outlined text-[16px] mr-1 text-primary">translate</span>
+          <span class="text-on-surface-variant">English</span>
+          <span class="text-outline-variant mx-1">/</span>
+          <span class="font-bold text-primary">اردو</span>
+        `;
+      } else {
+        langBtn.innerHTML = `
+          <span class="material-symbols-outlined text-[16px] mr-1 text-primary">translate</span>
+          <span class="font-bold text-primary">English</span>
+          <span class="text-outline-variant mx-1">/</span>
+          <span class="text-on-surface-variant">اردو</span>
+        `;
+      }
+    });
+  </script>
+</body></html>

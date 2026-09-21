@@ -1,0 +1,83 @@
+# Generated OpenAPI for the Phase 1 Staffbro API.
+# Regenerate from a running API later: curl http://localhost:8000/api/v1/openapi.json
+openapi: 3.1.0
+info:
+  title: Staffbro API
+  version: 0.1.0
+servers:
+  - url: http://localhost:8000
+paths:
+  /health:
+    get:
+      tags: [Monitoring]
+      operationId: health
+      security: []
+      responses:
+        "200":
+          description: API and database are up
+  /version:
+    get:
+      tags: [Monitoring]
+      operationId: version
+      security: []
+      responses:
+        "200":
+          description: Build version
+  /api/v1/catalog/professions:
+    get:
+      tags: [Catalogue]
+      operationId: listProfessions
+      parameters:
+        - in: query
+          name: limit
+          schema: { type: integer, default: 100 }
+        - in: query
+          name: cursor
+          schema: { type: string }
+      responses:
+        "200":
+          description: Profession page
+  /api/v1/catalog/skills:
+    get:
+      tags: [Catalogue]
+      operationId: listSkills
+      parameters:
+        - in: query
+          name: limit
+          schema: { type: integer, default: 100 }
+        - in: query
+          name: cursor
+          schema: { type: string }
+        - in: query
+          name: profession_id
+          schema: { type: string, format: uuid }
+      responses:
+        "200":
+          description: Skill page
+  /api/v1/catalog/locations:
+    get:
+      tags: [Catalogue]
+      operationId: listLocations
+      parameters:
+        - in: query
+          name: limit
+          schema: { type: integer, default: 200 }
+        - in: query
+          name: cursor
+          schema: { type: string }
+        - in: query
+          name: parent_id
+          schema: { type: string, format: uuid }
+        - in: query
+          name: level
+          schema: { type: string, enum: [COUNTRY, PROVINCE, CITY, AREA] }
+      responses:
+        "200":
+          description: Location page
+components:
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer
+security:
+  - HTTPBearer: []

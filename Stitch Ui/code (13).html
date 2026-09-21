@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Worker Verification Center | Staffbro</title>
+<!-- Google Fonts: Plus Jakarta Sans & Noto Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Noto+Nastaliq+Urdu:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined (Exact Spec) -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-container": "#0d7a57",
+            "on-primary-container": "#a7ffd5",
+            "secondary": "#545f73",
+            "on-secondary-fixed": "#111c2d",
+            "on-secondary-container": "#586377",
+            "on-secondary": "#ffffff",
+            "primary": "#005f42",
+            "tertiary-fixed-dim": "#3de273",
+            "primary-fixed-dim": "#7cd8af",
+            "on-tertiary-container": "#b2ffba",
+            "on-surface": "#0b1c30",
+            "surface": "#f8f9ff",
+            "on-tertiary": "#ffffff",
+            "surface-container-highest": "#d3e4fe",
+            "on-surface-variant": "#3e4943",
+            "secondary-fixed": "#d8e3fb",
+            "secondary-fixed-dim": "#bcc7de",
+            "secondary-container": "#d5e0f8",
+            "on-error-container": "#93000a",
+            "surface-container-high": "#dce9ff",
+            "on-primary-fixed-variant": "#005138",
+            "inverse-primary": "#7cd8af",
+            "surface-variant": "#d3e4fe",
+            "outline-variant": "#bec9c1",
+            "error": "#ba1a1a",
+            "tertiary": "#006029",
+            "on-primary": "#ffffff",
+            "inverse-surface": "#213145",
+            "on-error": "#ffffff",
+            "outline": "#6e7a72",
+            "on-primary-fixed": "#002114",
+            "on-background": "#0b1c30",
+            "on-tertiary-fixed": "#002109",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#eff4ff",
+            "primary-fixed": "#98f5ca",
+            "surface-tint": "#006c4c",
+            "on-secondary-fixed-variant": "#3c475a",
+            "background": "#f8f9ff",
+            "error-container": "#ffdad6",
+            "tertiary-fixed": "#66ff8e",
+            "surface-container": "#e5eeff",
+            "surface-dim": "#cbdbf5",
+            "inverse-on-surface": "#eaf1ff",
+            "on-tertiary-fixed-variant": "#005322",
+            "tertiary-container": "#007c36",
+            "surface-bright": "#f8f9ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2rem",
+            "gutter-mobile": "0.75rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "margin-mobile": "1rem",
+            "space-md": "1rem",
+            "margin": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "label-lg": ["Noto Sans"],
+            "body-md": ["Noto Sans"],
+            "body-sm": ["Noto Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "body-lg": ["Noto Sans"],
+            "label-sm": ["Noto Sans"],
+            "label-md": ["Noto Sans"],
+            "urdu": ["Noto Nastaliq Urdu", "Noto Sans"]
+          },
+          "fontSize": {
+            "headline-md": ["18px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "headline-xl-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "700" }],
+            "headline-xl": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-lg": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+            "headline-lg-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1;
+    }
+    /* Smooth native feel scrolling */
+    html {
+      -webkit-tap-highlight-color: transparent;
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased min-h-screen flex justify-center pb-28">
+<!-- Mobile Frame Container (Strict 360-412px target ergonomic layout) -->
+<main class="w-full max-w-[420px] bg-background min-h-screen flex flex-col relative shadow-xl overflow-x-hidden">
+<!-- Top App Bar (Shared Component Contract: docked full-width top, shadow-sm, no hard borders) -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest text-primary shadow-sm flex justify-between items-center w-full px-margin-mobile h-14">
+<div class="flex items-center gap-1">
+<button aria-label="Go Back" class="min-w-[48px] min-h-[48px] flex items-center justify-center -ml-2 text-primary hover:bg-surface-container-high transition-colors active:scale-95 duration-150 rounded-xl" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight leading-tight">Verification Center</h1>
+</div>
+<span class="font-urdu text-[11px] text-primary -mt-1 font-semibold leading-tight" dir="rtl">تصدیقی مرکز</span>
+</div>
+</div>
+<button aria-label="Help &amp; Information" class="min-w-[48px] min-h-[48px] flex items-center justify-center -mr-2 text-secondary hover:bg-surface-container-high transition-colors active:scale-95 duration-150 rounded-xl" type="button">
+<span class="material-symbols-outlined text-[24px]">info</span>
+</button>
+</header>
+<!-- Scrollable Screen Content Canvas -->
+<div class="px-margin-mobile py-4 space-y-4">
+<!-- Safety & Trust Guarantee Banner -->
+<section class="bg-surface-container-lowest rounded-xl border border-primary-fixed/40 p-3.5 shadow-sm relative overflow-hidden">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 bg-primary-fixed/20 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-start gap-3 relative z-10">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined fill text-[22px]">verified_user</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-1.5 flex-wrap">
+<h2 class="font-headline-md text-[15px] leading-snug font-bold text-primary">NADRA &amp; Staffbro Safety Guarantee</h2>
+<span class="bg-primary-fixed text-on-primary-fixed text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">100% Free</span>
+</div>
+<p class="text-on-surface-variant font-body-sm text-body-sm leading-relaxed">
+              Verification is completely free. Verified frontline workers get <strong class="text-primary font-bold">3x more employer calls</strong> and immediate priority placement across Islamabad &amp; Rawalpindi businesses.
+            </p>
+<div class="pt-1 flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+<span class="font-label-sm text-label-sm font-semibold">حکومت اور نادرا معیار کے مطابق ڈیٹا محفوظ</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Overall Verification Progress Indicator -->
+<div class="bg-surface-container-lowest rounded-xl p-3 border border-outline-variant/30 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-bold text-xs">
+            2/3
+          </div>
+<div>
+<p class="font-label-md text-label-md font-bold text-on-surface">Worker Trust Score</p>
+<p class="font-body-sm text-body-sm text-secondary">65% Completed (تقریباً مکمل)</p>
+</div>
+</div>
+<div class="w-24 bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 66%;"></div>
+</div>
+</div>
+<!-- Main Pillars Section Header -->
+<div class="flex items-center justify-between pt-1">
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Verification Steps</h2>
+<span class="font-urdu text-[12px] font-bold text-secondary" dir="rtl">تصدیق کے 3 مراحل</span>
+</div>
+<!-- ========================================================================= -->
+<!-- STEP 1: Phone Confirmation (State: Confirmed / تصدیق شدہ) -->
+<!-- ========================================================================= -->
+<article class="bg-surface-container-lowest rounded-xl border border-primary-fixed-dim/60 p-4 shadow-sm relative transition-all">
+<!-- Card Top Bar: Icon + Step Title + Badge -->
+<div class="flex items-start justify-between gap-2 mb-2">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px] text-primary">call</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Step 1</span>
+<span class="text-outline-variant text-xs">•</span>
+<h3 class="font-headline-md text-[15px] font-bold text-on-surface">Phone Confirmation</h3>
+</div>
+<p class="font-urdu text-[11px] text-secondary font-medium leading-none mt-0.5" dir="rtl">موبائل نمبر کی تصدیق</p>
+</div>
+</div>
+<!-- Status Chip: Confirmed -->
+<div class="inline-flex items-center gap-1 px-2.5 py-1 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-full shrink-0">
+<span class="material-symbols-outlined fill text-[16px] text-primary">check_circle</span>
+<span class="font-label-sm text-label-sm font-bold">Confirmed (تصدیق شدہ)</span>
+</div>
+</div>
+<!-- Phone Verification Box Details -->
+<div class="bg-surface rounded-lg p-3 border border-outline-variant/20 mt-3 space-y-1.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">verified</span>
+<span class="font-headline-md text-[15px] font-bold text-on-surface tracking-wide">+92 300 1234567</span>
+</div>
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">chat</span>
+<span>WhatsApp OTP</span>
+</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-tight">
+            Employers can call or message you after you apply or accept an offer.
+          </p>
+<p class="font-urdu text-[11px] text-secondary leading-normal" dir="rtl">
+            نوکری کی درخواست منظور ہونے پر مالک اس نمبر پر رابطہ کر سکتا ہے۔
+          </p>
+</div>
+</article>
+<!-- ========================================================================= -->
+<!-- STEP 2: National ID (CNIC) Verification (State: Action Required / زیر التواء) -->
+<!-- ========================================================================= -->
+<article class="bg-surface-container-lowest rounded-xl border-2 border-amber-300 p-4 shadow-sm relative space-y-3">
+<!-- Card Top Bar -->
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-900 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-amber-800 font-bold">Step 2 • Required</span>
+</div>
+<h3 class="font-headline-md text-[15px] font-bold text-on-surface">National ID (CNIC)</h3>
+<p class="font-urdu text-[11px] text-secondary font-medium leading-none mt-0.5" dir="rtl">قومی شناختی کارڈ کی تصدیق</p>
+</div>
+</div>
+<!-- Status Chip: Action Required / Amber -->
+<div class="inline-flex items-center gap-1 px-2.5 py-1 bg-amber-50 border border-amber-300 text-amber-900 rounded-full shrink-0">
+<span class="material-symbols-outlined text-[16px] text-amber-700">warning</span>
+<span class="font-label-sm text-label-sm font-bold">Pending Upload (شناختی کارڈ اپ لوڈ کریں)</span>
+</div>
+</div>
+<!-- Strict Privacy & Transparency Promise Callout -->
+<div class="bg-surface-container-low rounded-lg p-3 border border-secondary-fixed space-y-2">
+<div class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined fill text-[18px]">security</span>
+<h4 class="font-label-md text-label-md font-bold text-on-surface">Strict Privacy Promise (رازداری کا وعدہ)</h4>
+</div>
+<ul class="space-y-1.5 font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex items-start gap-1.5">
+<span class="material-symbols-outlined text-primary text-[16px] mt-0.5 shrink-0">check</span>
+<span>Used <strong class="text-on-surface font-semibold">ONLY</strong> to verify your identity and prevent fraud.</span>
+</li>
+<li class="flex items-start gap-1.5">
+<span class="material-symbols-outlined text-primary text-[16px] mt-0.5 shrink-0">check</span>
+<span>Only Staffbro internal verification team sees this document.</span>
+</li>
+<li class="flex items-start gap-1.5">
+<span class="material-symbols-outlined text-primary text-[16px] mt-0.5 shrink-0">check</span>
+<span>Stored securely and automatically purged after review. <strong class="text-error font-semibold">Never shared with businesses or third parties.</strong></span>
+</li>
+</ul>
+<p class="font-urdu text-[11px] text-secondary pt-1 border-t border-outline-variant/20 leading-relaxed" dir="rtl">
+            آپ کا شناختی کارڈ کسی بھی دکان یا ہوٹل مالک کو نہیں دکھایا جائے گا۔ یہ صرف سٹاف برو کے ریکارڈ میں محفوظ رہتا ہے۔
+          </p>
+</div>
+<!-- Action Card / CNIC Upload Area -->
+<div class="space-y-2.5">
+<!-- Dotted Upload Slot -->
+<div class="border-2 border-dashed border-primary/40 hover:border-primary bg-surface rounded-xl p-4 flex flex-col items-center justify-center text-center transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-primary-fixed/30 flex items-center justify-center text-primary group-hover:scale-105 transition-transform mb-2">
+<span class="material-symbols-outlined text-[28px]">add_a_photo</span>
+</div>
+<p class="font-headline-md text-headline-md text-on-surface font-bold">Upload CNIC Front</p>
+<p class="font-urdu text-body-sm text-primary font-bold" dir="rtl">شناختی کارڈ کی سامنے کی تصویر</p>
+<p class="font-body-sm text-body-sm text-secondary mt-1 max-w-[260px]">
+              Ensure all 4 corners are visible and CNIC number is clearly readable.
+            </p>
+</div>
+<!-- Secondary/Optional Selfie Row -->
+<div class="flex items-center gap-3 p-2.5 bg-surface rounded-lg border border-outline-variant/20">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center shrink-0 text-secondary">
+<span class="material-symbols-outlined text-[18px]">face</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-label-sm text-label-sm font-bold text-on-surface">Optional Live Selfie Check</p>
+<p class="font-body-sm text-[11px] text-secondary truncate">Take a quick selfie for instant badge approval (فوری منظوری)</p>
+</div>
+<button class="min-w-[48px] min-h-[48px] px-2 flex items-center justify-center font-label-sm text-label-sm font-bold text-primary hover:underline" type="button">
+              Add Selfie
+            </button>
+</div>
+<!-- Primary Trigger Button (Material 3 Emerald action, min 48dp) -->
+<button class="w-full min-h-[48px] bg-primary-container hover:bg-primary text-on-primary font-label-lg text-label-lg rounded-lg flex items-center justify-center gap-2 shadow-sm transition-transform active:scale-98" type="button">
+<span class="material-symbols-outlined text-[20px]">photo_camera</span>
+<span>Upload CNIC Front (تصویر منتخب کریں)</span>
+</button>
+</div>
+</article>
+<!-- ========================================================================= -->
+<!-- STEP 3: Experience & Reference Check (State: 1 of 2 Verified) -->
+<!-- ========================================================================= -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 p-4 shadow-sm relative space-y-3">
+<!-- Card Top Bar -->
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">work_history</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Step 3</span>
+<span class="text-outline-variant text-xs">•</span>
+<h3 class="font-headline-md text-[15px] font-bold text-on-surface">Experience &amp; References</h3>
+</div>
+<p class="font-urdu text-[11px] text-secondary font-medium leading-none mt-0.5" dir="rtl">سابقہ تجربے اور حوالہ جات کی تصدیق</p>
+</div>
+</div>
+<!-- Status Chip: 1 of 2 Verified -->
+<div class="inline-flex items-center gap-1 px-2.5 py-1 bg-blue-50 border border-blue-200 text-blue-800 rounded-full shrink-0">
+<span class="material-symbols-outlined text-[16px] text-blue-700">fact_check</span>
+<span class="font-label-sm text-label-sm font-bold">1 Verified (ایک تصدیق شدہ)</span>
+</div>
+</div>
+<!-- References List -->
+<div class="space-y-2">
+<!-- Entry 1: Confirmed Reference -->
+<div class="p-3 bg-surface rounded-lg border border-outline-variant/30 flex flex-col gap-2">
+<div class="flex items-start justify-between gap-2">
+<div>
+<h4 class="font-headline-md text-label-lg font-bold text-on-surface">Khyber Shinwari Restaurant</h4>
+<p class="font-body-sm text-body-sm text-secondary">Role: Head Chef (سرکاری چیف باورچی) • 2 Years</p>
+</div>
+<span class="inline-flex items-center gap-1 bg-emerald-100 text-emerald-800 font-label-sm text-[11px] font-bold px-2 py-0.5 rounded-full shrink-0">
+<span class="material-symbols-outlined fill text-[14px]">check</span>
+<span>Manager Confirmed via Call</span>
+</span>
+</div>
+<div class="flex items-center gap-1 text-[11px] text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px] text-primary">phone_in_talk</span>
+<span>Verified on 14 Jan 2025 by Staffbro Islamabad field agent</span>
+</div>
+</div>
+<!-- Entry 2: In Progress Reference -->
+<div class="p-3 bg-surface rounded-lg border border-outline-variant/30 flex flex-col gap-2">
+<div class="flex items-start justify-between gap-2">
+<div>
+<h4 class="font-headline-md text-label-lg font-bold text-on-surface">Usmania Restaurant</h4>
+<p class="font-body-sm text-body-sm text-secondary">Role: Assistant Cook (معاون باورچی) • 1 Year</p>
+</div>
+<span class="inline-flex items-center gap-1 bg-amber-100 text-amber-800 font-label-sm text-[11px] font-bold px-2 py-0.5 rounded-full shrink-0">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span>Verification in progress</span>
+</span>
+</div>
+<div class="flex items-center gap-1 text-[11px] text-secondary">
+<span class="material-symbols-outlined text-[14px]">ring_volume</span>
+<span>Calling manager Haji Shaukat (+92 312 *** 88)</span>
+</div>
+</div>
+</div>
+<!-- Privacy & Protection Note -->
+<div class="flex items-start gap-2 p-2.5 bg-surface-container-high/40 rounded-lg border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5 shrink-0">privacy_tip</span>
+<div class="text-[12px] text-on-surface-variant leading-relaxed">
+<p>Staffbro calls past employers to verify job title and honesty. Your references' phone numbers remain <strong class="text-on-surface font-semibold">100% PRIVATE</strong> and are never shown publicly.</p>
+<p class="font-urdu text-[11px] text-secondary mt-0.5" dir="rtl">آپ کے ریفرنسز کا فون نمبر مکمل طور پر پوشیدہ اور محفوظ رہتا ہے۔</p>
+</div>
+</div>
+<!-- Add Another Reference Button -->
+<button class="w-full min-h-[48px] bg-surface-container-lowest border border-primary text-primary hover:bg-primary-fixed/20 font-label-lg text-label-lg rounded-lg flex items-center justify-center gap-2 transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span>Add Another Work Reference (نیا حوالہ شامل کریں)</span>
+</button>
+</article>
+<!-- Bottom WhatsApp Support Card (Floating Help dock) -->
+<section class="bg-surface-container-lowest border border-emerald-200 rounded-xl p-3.5 shadow-sm space-y-2">
+<div class="flex items-center gap-2 text-emerald-800">
+<span class="material-symbols-outlined text-[20px] text-emerald-600">contact_support</span>
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface">Need help with verification?</h4>
+</div>
+<p class="font-body-sm text-body-sm text-secondary">
+          Trouble uploading your CNIC? Send pictures directly to Staffbro Official Support on WhatsApp.
+        </p>
+<p class="font-urdu text-[11px] text-emerald-900 font-semibold" dir="rtl">
+          تصویر اپ لوڈ کرنے میں مشکل ہے؟ واٹس ایپ پر شناختی کارڈ ارسال کریں۔
+        </p>
+<!-- Dedicated WhatsApp Direct Action Button -->
+<a class="w-full min-h-[48px] bg-[#25D366] hover:bg-[#1EBE5D] text-[#064E3B] font-bold font-label-lg text-label-lg rounded-lg flex items-center justify-center gap-2 shadow-sm transition-transform active:scale-98" href="https://wa.me/923007823327" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined fill text-[22px]">chat</span>
+<span>WhatsApp CNIC Support (0300-STAFFBRO)</span>
+</a>
+</section>
+</div>
+<!-- ========================================================================= -->
+<!-- BottomNavBar (Shared Component JSON Execution) -->
+<!-- active_navigation mapped directly to "Profile" based on Verification page intent -->
+<!-- ========================================================================= -->
+<nav aria-label="Main Navigation" class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter-mobile py-2 bg-surface-container-lowest dark:bg-inverse-surface shadow-[0_-2px_8px_0_rgba(15,23,42,0.06)]">
+<!-- Jobs Tab (Inactive) -->
+<a class="flex flex-col items-center justify-center min-w-[48px] min-h-[48px] px-3 py-1 text-secondary dark:text-secondary-fixed-dim font-label-sm text-label-sm hover:bg-surface-container dark:hover:bg-surface-container-highest rounded-xl transition-colors active:scale-95 duration-150 ease-out" href="#">
+<span class="material-symbols-outlined text-[24px]">work</span>
+<span class="mt-0.5">Jobs</span>
+</a>
+<!-- Applications Tab (Inactive) -->
+<a class="flex flex-col items-center justify-center min-w-[48px] min-h-[48px] px-3 py-1 text-secondary dark:text-secondary-fixed-dim font-label-sm text-label-sm hover:bg-surface-container dark:hover:bg-surface-container-highest rounded-xl transition-colors active:scale-95 duration-150 ease-out" href="#">
+<span class="material-symbols-outlined text-[24px]">assignment</span>
+<span class="mt-0.5">Applications</span>
+</a>
+<!-- Profile Tab (ACTIVE - Matches Worker Verification Context) -->
+<a aria-current="page" class="flex flex-col items-center justify-center min-w-[48px] min-h-[48px] px-3 py-1 bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl font-label-sm text-label-sm active:scale-95 transition-transform duration-150 ease-out shadow-sm" href="#">
+<span class="material-symbols-outlined fill text-[24px]">person</span>
+<span class="mt-0.5 font-bold">Profile</span>
+</a>
+</nav>
+</main>
+</body></html>

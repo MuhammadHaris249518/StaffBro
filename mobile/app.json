@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "name": "Staffbro",
+    "slug": "staffbro",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "staffbro",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": false
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#005f42"
+      },
+      "package": "pk.staffbro.app"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-asset",
+      "expo-secure-store",
+      "expo-font"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
