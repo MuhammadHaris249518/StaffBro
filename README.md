@@ -1,34 +1,19 @@
-<div align="center">
-
 # 🏢 StaffBro
 
-**Two-sided hiring marketplace for frontline workers and hospitality / retail businesses.**
-
-[![Android App](https://img.shields.io/badge/📲_Download_Android_APK-Direct_Install-00C853?style=for-the-badge&logo=android&logoColor=white)](https://expo.dev/accounts/sheikh-khizar/projects/staffbro/builds/6c978e34-a19a-4eda-a29d-1f0189fd34d7)
-[![Admin Portal](https://img.shields.io/badge/🖥️_Admin_Portal-Live_Demo-0288D1?style=for-the-badge&logo=react&logoColor=white)](https://abundant-wonder-production-b171.up.railway.app)
-[![API Docs](https://img.shields.io/badge/⚙️_Backend_API-Swagger_Docs-455A64?style=for-the-badge&logo=fastapi&logoColor=white)](https://staffbro-production.up.railway.app/docs)
-
-<br />
-
-### 📱 Get the Live Mobile App
-
-<a href="https://expo.dev/accounts/sheikh-khizar/projects/staffbro/builds/6c978e34-a19a-4eda-a29d-1f0189fd34d7">
-  <img src="https://img.shields.io/badge/⬇️_CLICK_HERE_TO_DOWNLOAD_ANDROID_APK-2E7D32?style=for-the-badge&logo=android&logoColor=white&scale=1.5" height="48" alt="Download APK" />
-</a>
-
-*Direct install on any Android phone • Live cloud database connected*
+Two-sided hiring marketplace for frontline workers and hospitality / retail businesses in Islamabad / Rawalpindi.
 
 ---
 
-</div>
+### 📲 Download Mobile App (Android)
+[![Download Android APK](https://img.shields.io/badge/📲_Download_Android_APK-Click_to_Install-00C853?style=for-the-badge&logo=android&logoColor=white)](https://expo.dev/accounts/sheikh-khizar/projects/staffbro/builds/6c978e34-a19a-4eda-a29d-1f0189fd34d7)
 
-## ⚡ Live Demos & Access
+*Click the button above on any Android device to install the app directly.*
 
-| Service | Link | Access / Demo Credentials |
-| :--- | :--- | :--- |
-| 📱 **Mobile App (Android)** | [**Download & Install APK**](https://expo.dev/accounts/sheikh-khizar/projects/staffbro/builds/6c978e34-a19a-4eda-a29d-1f0189fd34d7) | Open on Android phone to install directly |
-| 🖥️ **Admin Web Dashboard** | [**Open Admin Portal**](https://abundant-wonder-production-b171.up.railway.app) | **Phone:** `03009999999` • **Password:** `password8` |
-| ⚙️ **Backend REST API** | [**Interactive Swagger Docs**](https://staffbro-production.up.railway.app/docs) | Health: [`/health`](https://staffbro-production.up.railway.app/health) |
+---
+
+### 🌐 Live Web Demos
+* 🖥️ **Admin Portal:** [https://abundant-wonder-production-b171.up.railway.app](https://abundant-wonder-production-b171.up.railway.app) *(Login: `03009999999` / `password8`)*
+* ⚙️ **Backend API (Swagger Docs):** [https://staffbro-production.up.railway.app/docs](https://staffbro-production.up.railway.app/docs)
 
 ---
 
